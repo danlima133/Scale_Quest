@@ -7,6 +7,8 @@ extents = Vector2( 8, 8 )
 
 [node name="box" type="RigidBody2D" groups=["box"]]
 mode = 2
+mass = 0.5
+gravity_scale = 5.0
 
 [node name="texture" type="Sprite" parent="."]
 scale = Vector2( 0.25, 0.25 )

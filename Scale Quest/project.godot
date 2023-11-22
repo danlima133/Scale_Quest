@@ -15,12 +15,13 @@ config/icon="res://icon.png"
 
 [display]
 
-window/size/width=512
-window/size/height=300
+window/size/width=320
+window/size/height=176
+window/size/resizable=false
 window/size/test_width=1024
 window/size/test_height=600
 window/stretch/mode="2d"
-window/stretch/aspect="expand"
+window/stretch/aspect="keep_height"
 
 [gui]
 
@@ -41,6 +42,11 @@ playerRight={
 playerJump={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+playerInterecation={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 

@@ -294,10 +294,12 @@ radius = 4.0
 height = 4.0
 
 [node name="player" type="KinematicBody2D" groups=["player"]]
+z_index = 1
 
 [node name="texture" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "jump"
+offset = Vector2( 0, -8 )
 
 [node name="movement_animation" type="AnimationPlayer" parent="texture"]
 playback_process_mode = 0
@@ -320,9 +322,9 @@ parameters/conditions/on_floor = false
 parameters/conditions/run = false
 
 [node name="shape" type="CollisionShape2D" parent="."]
-position = Vector2( 4, 10 )
+position = Vector2( 4, 2 )
 shape = SubResource( 25 )
 
-[node name="movementBehavior" type="Node" parent="." groups=["movemetPlayer"]]
+[node name="movementBehavior" type="Node" parent="."]
 script = ExtResource( 3 )
 dataMovementPath = "res://game_behavior/player_behavior/metaData/moveData.move"

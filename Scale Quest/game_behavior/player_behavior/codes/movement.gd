@@ -204,5 +204,3 @@ func _physics_process(delta):
 			colision.collider.apply_central_impulse(-colision.normal * inertia)
 	
 	#end
-	
-	#end
