@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/4_fa#.ogg-a406c8339d392fb8fd8b0d2d8f536c7f.oggstr"
+
+[deps]
+
+source_file="res://assets/sfx/notes sfx/whole tone woods/4_fa#.ogg"
+dest_files=[ "res://.import/4_fa#.ogg-a406c8339d392fb8fd8b0d2d8f536c7f.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

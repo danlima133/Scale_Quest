@@ -1,0 +1,117 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://tiles_sets/MajorPlains.tres" type="TileSet" id=1]
+[ext_resource path="res://game_behavior/platform_behavior/objects/platform.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gameMangers/Collectables/objects/ManagerCollectables.tscn" type="PackedScene" id=3]
+[ext_resource path="res://gameMangers/TimeRoom/objects/RoomTime.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game_behavior/player_behavior/objects/player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game_behavior/collectables/musicNotes/musicNote_1/object/musicNote.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game_behavior/collectables/key/object/key.tscn" type="PackedScene" id=7]
+[ext_resource path="res://game_behavior/musicBlock_behavior/objects/MusicBlock.tscn" type="PackedScene" id=8]
+[ext_resource path="res://roomsBackGrounds/MajotPlainsBG.tscn" type="PackedScene" id=9]
+[ext_resource path="res://game_behavior/door_behavior/objects/door.tscn" type="PackedScene" id=10]
+[ext_resource path="res://game_behavior/box_behavior/objects/box.tscn" type="PackedScene" id=11]
+[ext_resource path="res://gameMangers/MuscialNotes/objects/ConfigNoteMusical.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/sfx/notes sfx/major plains/1_do.ogg" type="AudioStream" id=13]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 224, 64, 0, 0, 0, 0, 224, 144 )
+}
+
+[node name="level2" type="Node2D"]
+
+[node name="MajotPlainsBG" parent="." instance=ExtResource( 9 )]
+
+[node name="RoomTime" parent="." instance=ExtResource( 4 )]
+timeLevel = 200
+
+[node name="ManagerCollectables" parent="." instance=ExtResource( 3 )]
+
+[node name="player" parent="." instance=ExtResource( 5 )]
+position = Vector2( 160, 144 )
+
+[node name="Terrain" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 16, 1, 0, 17, 1, 0, 18, 1, 0, 19, 1, 0, 65536, 1, 0, 65537, 3, 0, 65538, 3, 0, 65539, 3, 0, 65540, 3, 0, 65541, 3, 0, 65542, 3, 0, 65543, 3, 0, 65544, 3, 0, 65545, 3, 0, 65546, 3, 0, 65547, 3, 0, 65548, 3, 0, 65549, 3, 0, 65550, 3, 0, 65551, 3, 0, 65552, 3, 0, 65553, 3, 0, 65554, 3, 0, 65555, 1, 0, 131072, 1, 0, 131073, 3, 0, 131074, 3, 0, 131075, 3, 0, 131076, 3, 0, 131077, 3, 0, 131078, 3, 0, 131079, 3, 0, 131080, 3, 0, 131081, 3, 0, 131082, 3, 0, 131083, 3, 0, 131084, 3, 0, 131085, 3, 0, 131086, 3, 0, 131087, 3, 0, 131088, 3, 0, 131089, 3, 0, 131090, 3, 0, 131091, 1, 0, 196608, 1, 0, 196609, 3, 0, 196610, 3, 0, 196611, 3, 0, 196612, 3, 0, 196613, 3, 0, 196614, 3, 0, 196615, 3, 0, 196616, 3, 0, 196617, 3, 0, 196618, 3, 0, 196619, 3, 0, 196620, 3, 0, 196621, 3, 0, 196622, 3, 0, 196623, 3, 0, 196624, 1, 0, 196625, 1, 0, 196626, 1, 0, 196627, 1, 0, 262144, 1, 0, 262145, 3, 0, 262146, 3, 0, 262147, 3, 0, 262148, 3, 0, 262149, 3, 0, 262150, 3, 0, 262151, 3, 0, 262152, 3, 0, 262153, 3, 0, 262154, 3, 0, 262155, 3, 0, 262156, 3, 0, 262157, 3, 0, 262158, 3, 0, 262159, 3, 0, 262160, 3, 0, 262161, 3, 0, 262162, 3, 0, 262163, 1, 0, 327680, 1, 0, 327685, 3, 0, 327686, 3, 0, 327692, 3, 0, 327693, 3, 0, 327694, 3, 0, 327695, 3, 0, 327696, 3, 0, 327697, 3, 0, 327698, 3, 0, 327699, 1, 0, 393216, 1, 0, 393217, 1, 0, 393218, 1, 0, 393219, 1, 0, 393220, 1, 0, 393221, 3, 0, 393222, 3, 0, 393223, 3, 0, 393224, 3, 0, 393225, 3, 0, 393226, 3, 0, 393227, 3, 0, 393228, 3, 0, 393229, 3, 0, 393230, 3, 0, 393231, 3, 0, 393232, 3, 0, 393233, 3, 0, 393234, 3, 0, 393235, 1, 0, 458752, 1, 0, 458756, 1, 0, 458757, 1, 0, 458758, 3, 0, 458759, 3, 0, 458761, 3, 0, 458762, 3, 0, 458763, 3, 0, 458764, 3, 0, 458765, 3, 0, 458766, 3, 0, 458767, 3, 0, 458769, 1, 0, 458770, 1, 0, 458771, 1, 0, 524288, 1, 0, 524289, 3, 0, 524290, 3, 0, 524293, 1, 0, 524294, 1, 0, 524295, 3, 0, 524297, 3, 0, 524298, 3, 0, 524299, 3, 0, 524300, 3, 0, 524301, 3, 0, 524302, 3, 0, 524303, 3, 0, 524305, 3, 0, 524306, 3, 0, 524307, 1, 0, 589824, 1, 0, 589825, 3, 0, 589826, 3, 0, 589830, 1, 0, 589831, 1, 0, 589833, 3, 0, 589834, 3, 0, 589835, 3, 0, 589836, 3, 0, 589837, 3, 0, 589838, 3, 0, 589839, 3, 0, 589841, 3, 0, 589842, 3, 0, 589843, 1, 0, 655360, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655375, 0, 0, 655376, 0, 0, 655377, 0, 0, 655378, 0, 0, 655379, 0, 0 )
+
+[node name="collisionBody" type="StaticBody2D" parent="Terrain"]
+
+[node name="shape" type="CollisionPolygon2D" parent="Terrain/collisionBody"]
+polygon = PoolVector2Array( 0, 0, 320, 0, 320, 176, 0, 176, 0, 160, 304, 160, 304, 16, 16, 16, 16, 160, 0, 160 )
+
+[node name="shape2" type="CollisionPolygon2D" parent="Terrain/collisionBody"]
+polygon = PoolVector2Array( 16, 96, 80, 96, 80, 112, 96, 112, 96, 128, 112, 128, 112, 144, 128, 144, 128, 160, 96, 160, 96, 144, 80, 144, 80, 128, 64, 128, 64, 112, 16, 112 )
+
+[node name="shape3" type="CollisionPolygon2D" parent="Terrain/collisionBody"]
+polygon = PoolVector2Array( 256, 48, 304, 48, 304, 64, 256, 64 )
+
+[node name="shape4" type="CollisionPolygon2D" parent="Terrain/collisionBody"]
+polygon = PoolVector2Array( 272, 112, 272, 128, 304, 128, 304, 112 )
+
+[node name="RoomObjects" type="Node" parent="."]
+
+[node name="key" parent="RoomObjects" instance=ExtResource( 7 )]
+position = Vector2( 272, 96 )
+
+[node name="Box" type="Node" parent="."]
+
+[node name="box" parent="Box" instance=ExtResource( 11 )]
+position = Vector2( 273, 40 )
+
+[node name="Platforms" type="Node" parent="."]
+
+[node name="platform" parent="Platforms" instance=ExtResource( 2 )]
+
+[node name="path" parent="Platforms/platform" index="0"]
+curve = SubResource( 1 )
+
+[node name="root_motion" parent="Platforms/platform/path" index="0"]
+position = Vector2( 224, 64 )
+
+[node name="MusicBlock" parent="Platforms/platform/path/root_motion" index="1" instance=ExtResource( 8 )]
+position = Vector2( -8, -24 )
+configRefPath = NodePath("../ConfigNoteMusical2")
+
+[node name="ConfigNoteMusical2" parent="Platforms/platform/path/root_motion" index="2" instance=ExtResource( 12 )]
+refNoteMusicalPath = NodePath("../MusicBlock")
+refReciveDataPath = NodePath("../../..")
+configNoteMusicalPath = "res://gameMangers/MuscialNotes/configFiles/schemeNoteMusical.MGconfig"
+blocksSync = [ NodePath("../../../ConfigNoteMusical") ]
+
+[node name="ConfigNoteMusical" parent="Platforms/platform" instance=ExtResource( 12 )]
+refNoteMusicalPath = NodePath("../../../MusicBlock/MusicBlock")
+refReciveDataPath = NodePath("..")
+configNoteMusicalPath = "res://gameMangers/MuscialNotes/configFiles/schemeNoteMusical.MGconfig"
+blocksSync = [ NodePath("../path/root_motion/ConfigNoteMusical2") ]
+
+[node name="Door" type="Node" parent="."]
+
+[node name="door" parent="Door" instance=ExtResource( 10 )]
+position = Vector2( 304, 16 )
+scale = Vector2( -1, 1 )
+doorOutputPath = NodePath("../door2")
+need_key = true
+
+[node name="door2" parent="Door" instance=ExtResource( 10 )]
+position = Vector2( 16, 128 )
+doorOutputPath = NodePath("../door")
+
+[node name="MusicBlock" type="Node" parent="."]
+
+[node name="MusicBlock" parent="MusicBlock" instance=ExtResource( 8 )]
+position = Vector2( 32, 80 )
+configRefPath = NodePath("../../Platforms/platform/ConfigNoteMusical")
+
+[node name="musicNote" parent="." instance=ExtResource( 6 )]
+position = Vector2( 64, 144 )
+
+[node name="noteData" parent="musicNote" index="2"]
+sound_note = ExtResource( 13 )
+
+[connection signal="finished" from="RoomTime" to="player" method="_on_RoomTime_finished"]
+
+[editable path="Platforms/platform"]
+[editable path="musicNote"]

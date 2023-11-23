@@ -5,6 +5,10 @@ export(NodePath) var refReciveDataPath
 
 export(String , FILE , "*.MGconfig") var configNoteMusicalPath
 
+export(bool) var call_on_start = false
+
+export(Array , NodePath) var blocksSync
+
 var configSchemeData:Dictionary
 
 var NoteMusical:Object
@@ -33,10 +37,24 @@ func _get_objects():
 	NoteMusical = get_node(refNoteMusicalPath)
 	
 	ReciveData = get_node(refReciveDataPath)
+	
+	if call_on_start == true:
+		
+		yield(get_tree().create_timer(0.1) , "timeout")
+	
+		_callByCase("desactive")
 
 func _sync_with_other_objects():
 	
-	pass
+	for objPath in blocksSync:
+		
+		var obj = get_node(objPath)
+		
+		obj.callObjects(active)
+		
+		obj.active = active
+		
+		obj.NoteMusical.block_active = !active
 
 func _callByCase(key:String):
 	
@@ -54,7 +72,7 @@ func _callByCase(key:String):
 			
 			obj.call(call)
 
-func callObjects(case:bool):
+func callObjects(case:bool , syncCall:bool = false):
 	
 	active = case
 	
@@ -67,6 +85,10 @@ func callObjects(case:bool):
 		false:
 			
 			_callByCase("desactive")
+	
+	if syncCall == true:
+
+		_sync_with_other_objects()
 
 func _ready():
 	

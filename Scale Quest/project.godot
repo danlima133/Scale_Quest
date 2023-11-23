@@ -11,8 +11,16 @@ config_version=4
 [application]
 
 config/name="Scale Quest"
-run/main_scene="res://level.tscn"
 config/icon="res://icon.png"
+
+[audio]
+
+default_bus_layout="res://game_behavior/musicChanels/musicServer.tres"
+
+[autoload]
+
+ServeAudio="*res://sigletonsGlobals/ServeAudio.gd"
+MangerLevel="*res://sigletonsGlobals/MangerLevel.gd"
 
 [display]
 

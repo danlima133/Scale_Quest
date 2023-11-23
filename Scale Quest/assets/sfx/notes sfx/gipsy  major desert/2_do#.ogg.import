@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/2_do#.ogg-bcaad4f3269ca1525ddfd0dcc4e5f0a3.oggstr"
+
+[deps]
+
+source_file="res://assets/sfx/notes sfx/gipsy  major desert/2_do#.ogg"
+dest_files=[ "res://.import/2_do#.ogg-bcaad4f3269ca1525ddfd0dcc4e5f0a3.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

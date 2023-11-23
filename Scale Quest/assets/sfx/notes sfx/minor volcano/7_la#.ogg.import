@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/7_la#.ogg-a7acb9a27aaca16eb7ca6571964458ad.oggstr"
+
+[deps]
+
+source_file="res://assets/sfx/notes sfx/minor volcano/7_la#.ogg"
+dest_files=[ "res://.import/7_la#.ogg-a7acb9a27aaca16eb7ca6571964458ad.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

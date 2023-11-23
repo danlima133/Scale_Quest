@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/4_fa.ogg-bfbe15819ab834ef12798314e10515cd.oggstr"
+
+[deps]
+
+source_file="res://assets/sfx/notes sfx/major plains/4_fa.ogg"
+dest_files=[ "res://.import/4_fa.ogg-bfbe15819ab834ef12798314e10515cd.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

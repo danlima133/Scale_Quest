@@ -36,6 +36,6 @@ func _input(event):
 			
 			if object != null:
 			
-				objectConfig.callObjects(block_active)
+				objectConfig.callObjects(block_active , true)
 				
 				block_active =! block_active

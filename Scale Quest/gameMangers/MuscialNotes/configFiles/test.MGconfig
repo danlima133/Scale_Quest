@@ -1,0 +1,13 @@
+{
+    ".":
+    {
+        "active":
+        [
+            "hide"
+        ],
+        "desactive":
+        [
+            "show"
+        ]
+    }
+}

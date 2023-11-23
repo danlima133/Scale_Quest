@@ -27,7 +27,13 @@ func _input(event):
 				
 				true:
 					
-					pass
+					var manager = owner.get_node("ManagerCollectables")
+					
+					if manager.keys >= 1:
+						
+						manager.remove_key(1)
+						
+						_teleport_to_door()
 					
 				false:
 					

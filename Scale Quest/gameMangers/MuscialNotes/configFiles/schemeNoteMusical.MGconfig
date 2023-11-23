@@ -9,16 +9,5 @@
         [
             "call_platform"
         ]
-    },
-    "path/root_motion/body/shape":
-    {
-        "active":
-        [
-            "hide"
-        ],
-        "desactive":
-        [
-            "show"
-        ]
     }
 }

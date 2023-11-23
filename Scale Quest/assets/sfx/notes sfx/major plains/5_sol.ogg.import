@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/5_sol.ogg-c3dd3faec1b5276db728d1b6be8a54db.oggstr"
+
+[deps]
+
+source_file="res://assets/sfx/notes sfx/major plains/5_sol.ogg"
+dest_files=[ "res://.import/5_sol.ogg-c3dd3faec1b5276db728d1b6be8a54db.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

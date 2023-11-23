@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/7_si.ogg-f086b7f584d2414c53e631c931098d28.oggstr"
+
+[deps]
+
+source_file="res://assets/sfx/notes sfx/major plains/7_si.ogg"
+dest_files=[ "res://.import/7_si.ogg-f086b7f584d2414c53e631c931098d28.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
