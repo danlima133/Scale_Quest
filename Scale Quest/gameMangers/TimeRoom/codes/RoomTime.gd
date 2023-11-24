@@ -65,6 +65,8 @@ func _process(delta):
 
 func _ready():
 	
+	if LoadScene.has_load == true: yield(LoadScene , "loadCompleted")
+	
 	_set_timer()
 
 func _on_time_timeout():

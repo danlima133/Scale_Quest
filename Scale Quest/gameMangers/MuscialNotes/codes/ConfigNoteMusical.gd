@@ -45,7 +45,7 @@ func _get_objects():
 		_callByCase("desactive")
 
 func _sync_with_other_objects():
-	
+
 	for objPath in blocksSync:
 		
 		var obj = get_node(objPath)
@@ -68,7 +68,7 @@ func _callByCase(key:String):
 		
 		for call in arrayMethods:
 			
-			print(call)
+			print(call , name)
 			
 			obj.call(call)
 

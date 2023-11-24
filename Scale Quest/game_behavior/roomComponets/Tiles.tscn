@@ -1,0 +1,7 @@
+[gd_scene format=2]
+
+[node name="Tiles" type="TileMap"]
+cell_size = Vector2( 16, 16 )
+format = 1
+
+[node name="collisionBody" type="StaticBody2D" parent="."]

@@ -17,7 +17,7 @@ func _ready():
 	
 	root_motion.offset = MangerLevel.lastPoint
 	
-	yield(get_tree().create_timer(1) , "timeout")
+	if LoadScene.has_load == true: yield(LoadScene , "loadCompleted")
 	
 	_next_level()
 	
@@ -85,4 +85,4 @@ func _on_area_mouse_input_event(_viewport, event, _shape_idx):
 		
 		if event.pressed and event.button_index == 1:
 			
-			MangerLevel.load_room()
+			MangerLevel.load_room(owner)

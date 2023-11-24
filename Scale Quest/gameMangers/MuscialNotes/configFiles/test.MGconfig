@@ -3,11 +3,11 @@
     {
         "active":
         [
-            "hide"
+            "sent_platform"
         ],
         "desactive":
         [
-            "show"
+            "call_platform"
         ]
     }
 }

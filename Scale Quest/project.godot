@@ -21,6 +21,7 @@ default_bus_layout="res://game_behavior/musicChanels/musicServer.tres"
 
 ServeAudio="*res://sigletonsGlobals/ServeAudio.gd"
 MangerLevel="*res://sigletonsGlobals/MangerLevel.gd"
+LoadScene="*res://sigletonsGlobals/LoadScene.gd"
 
 [display]
 

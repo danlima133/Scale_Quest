@@ -38,9 +38,13 @@ func _getting_note(object):
 		
 		ServeAudio.play_sound_at_position(sound_note , get_parent().global_position , "SFXs")
 		
-		dataBase.queue_free()
+		dataBase.hide()
 		
-		MangerLevel.load_room()
+		dataBase.get_node("shape").set_deferred("disabled" , true)
+		
+		yield(ServeAudio , "sound_finished")
+		
+		MangerLevel.load_room(dataBase.owner)
 
 func _ready():
 	

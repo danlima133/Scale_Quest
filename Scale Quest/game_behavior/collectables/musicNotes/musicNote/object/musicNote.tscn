@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game_behavior/collectables/musicNotes/bahviorNotes/objects/noteData.tscn" type="PackedScene" id=1]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 8.0
+
+[node name="musicNote" type="Area2D"]
+
+[node name="texture" type="Sprite" parent="."]
+centered = false
+region_rect = Rect2( 16, 66, 16, 14 )
+
+[node name="shape" type="CollisionShape2D" parent="."]
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="noteData" parent="." instance=ExtResource( 1 )]

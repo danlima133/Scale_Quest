@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://shaders/codeShaders/transitionCode.tres" type="Shader" id=1]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/num_lines = 20.0
+shader_param/y_threshold = 0.5
+shader_param/line_color_a = Color( 1, 1, 1, 1 )
+shader_param/line_color_b = Color( 0, 0, 0, 1 )

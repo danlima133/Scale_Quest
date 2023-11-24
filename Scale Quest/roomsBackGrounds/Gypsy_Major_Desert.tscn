@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/backgroud/Gypsy Major Desert/sand.png" type="Texture" id=1]
 [ext_resource path="res://assets/backgroud/Gypsy Major Desert/sky.png" type="Texture" id=2]
-[ext_resource path="res://roomSpawners/cloudSpaw/objects/CloudSpaw.tscn" type="PackedScene" id=3]
+[ext_resource path="res://gameSpawners/cloudSpaw/objects/CloudSpaw.tscn" type="PackedScene" id=3]
 
 [node name="Gypsy_Major_Desert" type="Node2D"]
 

@@ -3,6 +3,10 @@ extends Area2D
 export(NodePath) var doorOutputPath
 export(bool) var need_key = false
 
+const doorClosedTexture = preload("res://assets/objects/doorClosed.tres")
+
+onready var texture = $texture
+
 var outputDoor:Object
 
 var object = null
@@ -42,6 +46,10 @@ func _input(event):
 func _ready():
 	
 	_get_door()
+	
+	if need_key == true:
+		
+		texture.texture = doorClosedTexture
 
 func _on_door_body_entered(body):
 	

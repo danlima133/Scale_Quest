@@ -1,6 +1,6 @@
 {
     "velocity":0.8,
-    "size":1,
+    "size":2,
     "wait_time":1.5,
     "independet":false
 }

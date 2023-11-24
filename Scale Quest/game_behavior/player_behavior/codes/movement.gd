@@ -34,6 +34,9 @@ var floorState = false
 
 var inertia:Vector2 = Vector2(10 , 10)
 
+var on_ledder = false
+var gravity = true
+
 ###
 
 ### (func) getting fileData and func _read:
@@ -128,33 +131,66 @@ func _get_input():
 	
 	#end
 	
-	#jump:
+	#jump and ledder:
 	
-	if Input.is_action_just_pressed("playerJump"):
+	match on_ledder:
 		
-		if moveObject.is_on_floor():
+		false:
 			
-			direction.y -= dataMove["jump"]
-			
-			floorState = true
-			
-			change_state("jump")
+			gravity = true
 	
-	if !moveObject.is_on_floor():
-		
-		if direction.y > 0:
+			if Input.is_action_just_pressed("playerJump"):
+				
+				if moveObject.is_on_floor():
+					
+					direction.y -= dataMove["jump"]
+					
+					floorState = true
+					
+					change_state("jump")
 			
-			change_state("fall")
+			if !moveObject.is_on_floor() and on_ledder == false:
+				
+				if direction.y > 0:
+					
+					change_state("fall")
+				
+			elif direction.y > 0:
+				
+				if floorState == true:
+				
+					change_state("floor")
+				
+					yield(movement_animation , "animation_finished")
+					
+					floorState = false
 		
-	elif direction.y > 0:
-		
-		if floorState == true:
-		
-			change_state("floor")
-		
-			yield(movement_animation , "animation_finished")
+		true:
 			
-			floorState = false
+			if direction.x == 0:
+			
+				change_state("idle")
+			
+			if Input.is_action_pressed("ui_up"):
+				
+				change_state("idle")
+				
+				direction.y = -35
+				
+				gravity = false
+			
+			elif Input.is_action_pressed("ui_down"):
+				
+				change_state("idle")
+				
+				direction.y = 35
+				
+				gravity = false
+			
+			else:
+				
+				gravity = true
+
 	
 	#end
 	
@@ -165,13 +201,15 @@ func _gravity(delta):
 	
 	#smartGravity:
 	
-	if direction.y < 0 or direction.y == 0:
-		
-		direction.y += (dataMove["gravity"] * delta)
+	if gravity:
 	
-	elif direction.y > 0:
+		if direction.y < 0 or direction.y == 0:
+			
+			direction.y += (dataMove["gravity"] * delta)
 		
-		direction.y += ((dataMove["gravity"] * 2) * delta)
+		elif direction.y > 0:
+			
+			direction.y += ((dataMove["gravity"] * 2) * delta)
 		
 	#end
 

@@ -16,7 +16,7 @@ var countRoom:int = -1
 
 var lastPoint:int
 
-func load_room():
+func load_room(current_scene):
 	
 	countRoom += 1
 	
@@ -28,7 +28,7 @@ func load_room():
 		roomOrder = []
 		current_level = ""
 		
-		get_tree().change_scene("res://mapaMundi/object/MapaMundi.tscn")
+		LoadScene.loadScene("res://mapaMundi/object/MapaMundi.tscn" , current_scene)
 		
 		return
 	
@@ -38,8 +38,8 @@ func load_room():
 	
 	if ResourceLoader.exists(path):
 		
-		get_tree().change_scene(path)
+		LoadScene.loadScene(path , current_scene)
 		
-#		var room = load(path)
-		
+#		var room = load(path) as PackedScene
+#
 #		print(room)

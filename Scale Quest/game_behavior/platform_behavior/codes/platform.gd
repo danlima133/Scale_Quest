@@ -1,7 +1,7 @@
 extends Node2D
 
-const sizeX = 64
-const sizeY = 64
+const sizeX = 16
+const sizeY = 4
 
 export(String , FILE , "*.platformData") var dataPath
 
@@ -40,6 +40,8 @@ func _get_data():
 				_make_platform_by_data()
 				
 				_processPlatform()
+				
+				print(proprities)
 
 	
 	file.close()
@@ -52,7 +54,7 @@ func _make_platform_by_data():
 	
 	var rect = Rect2(0 , 0 , (sizeX * size) , sizeY)
 	
-	collision.extents = (Vector2((sizeX * size)/8 , sizeY/8))
+	collision.extents = (Vector2((sizeX * size)/2 , sizeY/2))
 	
 	texture.region_rect = rect
 	
