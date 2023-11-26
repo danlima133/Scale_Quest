@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/Mapa Mundi/Flying_block/Flying_Block (3).png" type="Texture" id=1]
 [ext_resource path="res://assets/Mapa Mundi/clouds.png" type="Texture" id=2]
@@ -12,6 +12,9 @@
 [ext_resource path="res://assets/player/idle/idle (1).png" type="Texture" id=10]
 [ext_resource path="res://assets/player/idle/idle (2).png" type="Texture" id=11]
 [ext_resource path="res://mapaMundi/code/playerPath.gd" type="Script" id=12]
+[ext_resource path="res://mapaMundi/code/MapaMundi.gd" type="Script" id=13]
+[ext_resource path="res://mapaMundi/object/dootLevel.tscn" type="PackedScene" id=14]
+[ext_resource path="res://shaders/codeShaders/outlineCode.tres" type="Shader" id=15]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -69,6 +72,11 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 40, 145, 0, 0, 0, 0, 113, 132, 0, 0, 0, 0, 180, 125, 0, 0, 0, 0, 247, 88, 0, 0, 0, 0, 282, 62 )
 }
 
+[sub_resource type="ShaderMaterial" id=7]
+shader = ExtResource( 15 )
+shader_param/line_color = Color( 0.960784, 0.796078, 0.952941, 1 )
+shader_param/line_thickness = 0.0
+
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
 "frames": [ ExtResource( 10 ), ExtResource( 11 ) ],
@@ -80,6 +88,7 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=6]
 
 [node name="MapaMundi" type="Node2D"]
+script = ExtResource( 13 )
 
 [node name="foreground" type="Sprite" parent="."]
 z_index = -1
@@ -101,6 +110,23 @@ z_index = 1
 texture = ExtResource( 8 )
 centered = false
 
+[node name="dootsLevels" type="Node" parent="."]
+
+[node name="dootLevel" parent="dootsLevels" instance=ExtResource( 14 )]
+position = Vector2( 40, 145 )
+
+[node name="dootLevel2" parent="dootsLevels" instance=ExtResource( 14 )]
+position = Vector2( 113, 133 )
+dootLevel = 1
+
+[node name="dootLevel3" parent="dootsLevels" instance=ExtResource( 14 )]
+position = Vector2( 180, 125 )
+dootLevel = 2
+
+[node name="dootLevel4" parent="dootsLevels" instance=ExtResource( 14 )]
+position = Vector2( 247, 88 )
+dootLevel = 3
+
 [node name="flying_block" type="Node2D" parent="."]
 position = Vector2( 282, 67 )
 z_index = -1
@@ -109,6 +135,7 @@ z_index = -1
 position = Vector2( 0, -3 )
 frames = SubResource( 1 )
 animation = "flying"
+frame = 2
 playing = true
 
 [node name="move" type="AnimationPlayer" parent="flying_block/texture"]
@@ -116,7 +143,7 @@ autoplay = "flying"
 anims/RESET = SubResource( 2 )
 anims/flying = SubResource( 3 )
 
-[node name="playerPath" type="Node2D" parent="."]
+[node name="playerPath" type="Node2D" parent="." groups=["playerPath"]]
 script = ExtResource( 12 )
 
 [node name="path" type="Path2D" parent="playerPath"]
@@ -128,6 +155,7 @@ rotate = false
 loop = false
 
 [node name="player" type="AnimatedSprite" parent="playerPath/path/root_motion"]
+material = SubResource( 7 )
 frames = SubResource( 5 )
 animation = "idle"
 offset = Vector2( -2, -16 )
@@ -142,64 +170,11 @@ shape = SubResource( 6 )
 
 [node name="UI" type="Node" parent="."]
 
-[node name="control" type="Control" parent="UI"]
-visible = false
+[node name="base" type="Control" parent="UI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-
-[node name="margin" type="MarginContainer" parent="UI/control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_constants/margin_right = 5
-custom_constants/margin_top = 5
-custom_constants/margin_left = 5
-custom_constants/margin_bottom = 5
-
-[node name="content" type="VBoxContainer" parent="UI/control/margin"]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 315.0
-margin_bottom = 171.0
-
-[node name="space" type="Control" parent="UI/control/margin/content"]
-margin_right = 310.0
-margin_bottom = 132.0
-size_flags_vertical = 3
-
-[node name="info" type="VBoxContainer" parent="UI/control/margin/content"]
-margin_top = 136.0
-margin_right = 310.0
-margin_bottom = 166.0
-rect_min_size = Vector2( 0, 30 )
-
-[node name="div" type="HBoxContainer" parent="UI/control/margin/content/info"]
-margin_top = 10.0
-margin_right = 310.0
-margin_bottom = 30.0
-size_flags_vertical = 10
-
-[node name="Button" type="Button" parent="UI/control/margin/content/info/div"]
-margin_left = 10.0
-margin_right = 90.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 80, 0 )
-size_flags_horizontal = 6
-text = "Start"
-
-[node name="Label" type="Label" parent="UI/control/margin/content/info/div"]
-margin_left = 119.0
-margin_top = 3.0
-margin_right = 190.0
-margin_bottom = 17.0
-size_flags_horizontal = 6
-text = "name level"
-
-[node name="Button2" type="Button" parent="UI/control/margin/content/info/div"]
-margin_left = 234.0
-margin_right = 284.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 50, 0 )
-size_flags_horizontal = 6
-text = "Info."
+mouse_filter = 2
 
 [connection signal="input_event" from="playerPath/path/root_motion/player/area_mouse" to="playerPath" method="_on_area_mouse_input_event"]
+[connection signal="mouse_entered" from="playerPath/path/root_motion/player/area_mouse" to="playerPath" method="_on_area_mouse_mouse_entered"]
+[connection signal="mouse_exited" from="playerPath/path/root_motion/player/area_mouse" to="playerPath" method="_on_area_mouse_mouse_exited"]

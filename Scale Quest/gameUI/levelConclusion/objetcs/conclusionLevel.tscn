@@ -1,0 +1,22 @@
+[gd_scene format=2]
+
+[node name="conclusionLevel" type="VBoxContainer"]
+margin_left = 59.5
+margin_top = 14.0
+margin_right = 260.5
+margin_bottom = 46.0
+
+[node name="text" type="Label" parent="."]
+margin_right = 201.0
+margin_bottom = 14.0
+size_flags_vertical = 6
+text = "Conclusion"
+align = 1
+
+[node name="name_level" type="Label" parent="."]
+margin_top = 18.0
+margin_right = 201.0
+margin_bottom = 32.0
+size_flags_vertical = 6
+text = "name leve"
+align = 1

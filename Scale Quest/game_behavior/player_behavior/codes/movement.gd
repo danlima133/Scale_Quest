@@ -32,7 +32,7 @@ var lastDirection:Vector2
 
 var floorState = false
 
-var inertia:Vector2 = Vector2(10 , 10)
+var inertia = Vector2(10 , 10)
 
 var on_ledder = false
 var gravity = true
@@ -142,6 +142,8 @@ func _get_input():
 			if Input.is_action_just_pressed("playerJump"):
 				
 				if moveObject.is_on_floor():
+					
+					ServeAudio.play_sound_at_position(preload("res://assets/sfx/jump.ogg") , moveObject.global_position , "SFXs")
 					
 					direction.y -= dataMove["jump"]
 					

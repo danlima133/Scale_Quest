@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sophia_falling.ogg-633065d17ed0aeb3e573491595cb622c.oggstr"
+
+[deps]
+
+source_file="res://assets/sfx/cutscene_intro/sophia_falling.ogg"
+dest_files=[ "res://.import/sophia_falling.ogg-633065d17ed0aeb3e573491595cb622c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

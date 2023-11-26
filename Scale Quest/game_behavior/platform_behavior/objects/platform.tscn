@@ -26,7 +26,6 @@ tracks/0/keys = {
 
 [node name="platform" type="Node2D"]
 script = ExtResource( 2 )
-dataPath = "res://game_behavior/platform_behavior/metaData/platformProprieties.platformData"
 
 [node name="path" type="Path2D" parent="."]
 curve = SubResource( 4 )

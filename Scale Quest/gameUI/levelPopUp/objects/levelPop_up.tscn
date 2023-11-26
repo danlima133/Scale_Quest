@@ -1,0 +1,66 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://gameUI/levelPopUp/codes/levelPop_up.gd" type="Script" id=1]
+
+[node name="levelPop_up" type="Popup"]
+margin_right = 116.0
+margin_bottom = 61.0
+rect_pivot_offset = Vector2( 58, 32 )
+mouse_filter = 2
+script = ExtResource( 1 )
+
+[node name="panel" type="PanelContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -58.5
+margin_top = -32.0
+margin_right = 58.5
+margin_bottom = 32.0
+
+[node name="content" type="VBoxContainer" parent="panel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 110.0
+margin_bottom = 57.0
+
+[node name="name_level" type="Label" parent="panel/content"]
+margin_right = 103.0
+margin_bottom = 14.0
+text = "name Level"
+align = 1
+
+[node name="div_1" type="HBoxContainer" parent="panel/content"]
+margin_top = 18.0
+margin_right = 103.0
+margin_bottom = 32.0
+
+[node name="tag" type="Label" parent="panel/content/div_1"]
+margin_right = 45.0
+margin_bottom = 14.0
+text = "rooms:"
+
+[node name="count" type="Label" parent="panel/content/div_1"]
+margin_left = 49.0
+margin_right = 58.0
+margin_bottom = 14.0
+text = "#"
+
+[node name="div_2" type="HBoxContainer" parent="panel/content"]
+margin_top = 36.0
+margin_right = 103.0
+margin_bottom = 50.0
+
+[node name="tag" type="Label" parent="panel/content/div_2"]
+margin_right = 90.0
+margin_bottom = 14.0
+text = "Time Avarage:"
+
+[node name="count" type="Label" parent="panel/content/div_2"]
+margin_left = 94.0
+margin_right = 103.0
+margin_bottom = 14.0
+text = "#"
+
+[connection signal="popup_hide" from="." to="." method="_on_levelPop_up_popup_hide"]

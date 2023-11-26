@@ -6,7 +6,6 @@
 extents = Vector2( 8, 8 )
 
 [node name="box" type="RigidBody2D" groups=["box"]]
-z_index = 1
 mode = 2
 mass = 0.5
 gravity_scale = 5.0

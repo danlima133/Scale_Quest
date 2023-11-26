@@ -6,6 +6,9 @@
 radius = 8.0
 
 [node name="musicNote" type="Area2D"]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="texture" type="Sprite" parent="."]
 centered = false

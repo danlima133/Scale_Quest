@@ -20,9 +20,13 @@ preload("res://assets/tile_major_plains/notesMusic/note_2.tres")
 export(noteType) var noteRegion
 export(AudioStream) var sound_note
 
+export(NodePath) var roomTimePath
+
 onready var dataBase = get_parent()
 
 onready var texture = $"../texture"
+
+var roomTimeObject:Object
 
 func _set_noteData():
 	
@@ -34,6 +38,8 @@ func _getting_note(object):
 	
 	if object.is_in_group("player"):
 		
+		get_tree().call_group("roomTime" , "_stop_timer")
+		
 		emit_signal("levelCompleted")
 		
 		ServeAudio.play_sound_at_position(sound_note , get_parent().global_position , "SFXs")
@@ -44,7 +50,37 @@ func _getting_note(object):
 		
 		yield(ServeAudio , "sound_finished")
 		
-		MangerLevel.load_room(dataBase.owner)
+		_get_TimeAvarage()
+
+func _get_TimeAvarage():
+	
+	roomTimeObject = get_node(roomTimePath)
+	
+	var timeRoomConclusion:float = (roomTimeObject.timeLevel - roomTimeObject.timer_count)
+	
+	MangerLevel.levelsAvarageTime[MangerLevel.current_level].append(timeRoomConclusion)
+	
+	if MangerLevel.roomOrder.size() == (MangerLevel.countRoom + 1):
+		
+		var timeCount:float
+		
+		for t in MangerLevel.levelsAvarageTime[MangerLevel.current_level]:
+			
+			timeCount += t
+			
+		timeCount /= MangerLevel.roomOrder.size()
+		
+		if timeCount < MangerLevel.levelsTimeReal[MangerLevel.current_level]:
+		
+			MangerLevel.levelsTimeReal[MangerLevel.current_level] = timeCount
+		
+		else:
+			
+			if MangerLevel.levelsTimeReal[MangerLevel.current_level] == 0:
+				
+				MangerLevel.levelsTimeReal[MangerLevel.current_level] = timeCount
+	
+	MangerLevel.load_room(dataBase.owner)
 
 func _ready():
 	

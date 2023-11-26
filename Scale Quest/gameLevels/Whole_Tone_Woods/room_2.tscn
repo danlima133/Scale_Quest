@@ -1,0 +1,105 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://assets/sfx/notes sfx/major plains/2_re.ogg" type="AudioStream" id=1]
+[ext_resource path="res://tiles_sets/MajorPlains.tres" type="TileSet" id=2]
+[ext_resource path="res://game_behavior/player_behavior/objects/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game_behavior/box_behavior/objects/box.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game_behavior/roomComponets/Platforms.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game_behavior/roomComponets/Tiles.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game_behavior/platform_behavior/objects/platform.tscn" type="PackedScene" id=7]
+[ext_resource path="res://gameMangers/TimeRoom/objects/RoomTime.tscn" type="PackedScene" id=8]
+[ext_resource path="res://gameMangers/Collectables/objects/ManagerCollectables.tscn" type="PackedScene" id=9]
+[ext_resource path="res://game_behavior/roomComponets/Box.tscn" type="PackedScene" id=10]
+[ext_resource path="res://gameUI/room/roomUI.tscn" type="PackedScene" id=11]
+[ext_resource path="res://game_behavior/collectables/musicNotes/musicNote/object/musicNote.tscn" type="PackedScene" id=12]
+[ext_resource path="res://gameUI/roomInfo/object/roomInfo.tscn" type="PackedScene" id=13]
+[ext_resource path="res://roomsBackGrounds/MajotPlainsBG.tscn" type="PackedScene" id=14]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 72, 127, 0, 0, 0, 0, 72, 64 )
+}
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 256, 128, 0, 0, 0, 0, 256, 66 )
+}
+
+[node name="room_2" type="Node2D"]
+
+[node name="MajotPlainsBG" parent="." instance=ExtResource( 14 )]
+
+[node name="roomInfo" parent="." instance=ExtResource( 13 )]
+
+[node name="roomUI" parent="." instance=ExtResource( 11 )]
+roomTime = NodePath("../RoomTime")
+
+[node name="ManagerCollectables" parent="." instance=ExtResource( 9 )]
+
+[node name="RoomTime" parent="." instance=ExtResource( 8 )]
+timeLevel = 100
+
+[node name="Tiles" parent="." instance=ExtResource( 6 )]
+tile_set = ExtResource( 2 )
+tile_data = PoolIntArray( 0, 3, 0, 1, 3, 0, 2, 3, 0, 3, 3, 0, 4, 3, 0, 5, 3, 0, 6, 3, 0, 7, 3, 0, 8, 3, 0, 9, 3, 0, 10, 3, 0, 11, 3, 0, 12, 3, 0, 13, 3, 0, 14, 3, 0, 15, 3, 0, 16, 3, 0, 17, 3, 0, 18, 3, 0, 19, 3, 0, 65536, 3, 0, 65549, 3, 0, 65554, 3, 0, 65555, 3, 0, 131072, 3, 0, 131084, 3, 0, 131085, 3, 0, 131090, 3, 0, 131091, 3, 0, 196608, 3, 0, 196609, 3, 0, 196610, 3, 0, 196611, 3, 0, 196624, 3, 0, 196625, 3, 0, 196626, 3, 0, 196627, 3, 0, 262144, 3, 0, 262150, 3, 0, 262156, 3, 0, 262157, 3, 0, 262162, 3, 0, 262163, 3, 0, 327680, 3, 0, 327686, 3, 0, 327687, 3, 0, 327688, 3, 0, 327692, 3, 0, 327698, 3, 0, 327699, 3, 0, 393216, 3, 0, 393224, 3, 0, 393225, 3, 0, 393226, 3, 0, 393227, 3, 0, 393228, 3, 0, 393234, 3, 0, 393235, 3, 0, 458752, 3, 0, 458753, 5, 0, 458754, 5, 0, 458770, 3, 0, 458771, 3, 0, 524288, 3, 0, 524289, 3, 0, 524290, 3, 0, 524294, 5, 0, 524295, 5, 0, 524296, 5, 0, 524297, 5, 0, 524298, 5, 0, 524299, 5, 0, 524300, 5, 0, 524301, 5, 0, 524306, 3, 0, 524307, 3, 0, 589824, 3, 0, 589825, 3, 0, 589826, 3, 0, 589827, 5, 0, 589828, 5, 0, 589829, 5, 0, 589830, 3, 0, 589831, 3, 0, 589832, 3, 0, 589833, 3, 0, 589834, 3, 0, 589835, 3, 0, 589836, 3, 0, 589837, 3, 0, 589838, 5, 0, 589839, 5, 0, 589840, 5, 0, 589841, 5, 0, 589842, 3, 0, 589843, 3, 0, 655360, 3, 0, 655361, 3, 0, 655362, 3, 0, 655363, 3, 0, 655364, 3, 0, 655365, 3, 0, 655366, 3, 0, 655367, 3, 0, 655368, 3, 0, 655369, 3, 0, 655370, 3, 0, 655371, 3, 0, 655372, 3, 0, 655373, 3, 0, 655374, 3, 0, 655375, 3, 0, 655376, 3, 0, 655377, 3, 0, 655378, 3, 0, 655379, 3, 0 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Tiles/collisionBody" index="0"]
+polygon = PoolVector2Array( 320, 0, 320, 176, 0, 176, 0, 112, 48, 112, 48, 144, 96, 144, 96, 128, 224, 128, 224, 144, 288, 144, 288, 16, 16, 16, 16, 112, 0, 112, 0, 0 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Tiles/collisionBody" index="1"]
+polygon = PoolVector2Array( 16, 48, 64, 48, 64, 64, 16, 64 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Tiles/collisionBody" index="2"]
+polygon = PoolVector2Array( 96, 64, 112, 64, 112, 80, 143, 81, 144, 96, 192, 96, 192, 80, 208, 80, 208, 112, 128, 112, 128, 96, 97, 95 )
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Tiles/collisionBody" index="3"]
+polygon = PoolVector2Array( 224, 16, 222, 46, 192, 48, 192, 32, 208, 32, 208, 16 )
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Tiles/collisionBody" index="4"]
+polygon = PoolVector2Array( 256, 48, 288, 48, 288, 64, 256, 64 )
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="Tiles/collisionBody" index="5"]
+polygon = PoolVector2Array( 193, 65, 223, 65, 224, 80, 192, 80 )
+
+[node name="Platforms" parent="." instance=ExtResource( 5 )]
+
+[node name="platform" parent="Platforms" instance=ExtResource( 7 )]
+dataPath = "res://game_behavior/platform_behavior/metaData/platformProprieties.platformData"
+
+[node name="path" parent="Platforms/platform" index="0"]
+curve = SubResource( 1 )
+
+[node name="root_motion" parent="Platforms/platform/path" index="0"]
+position = Vector2( 72, 127 )
+
+[node name="platform2" parent="Platforms" instance=ExtResource( 7 )]
+dataPath = "res://game_behavior/platform_behavior/metaData/platformStyle2.platformData"
+
+[node name="path" parent="Platforms/platform2" index="0"]
+curve = SubResource( 2 )
+
+[node name="root_motion" parent="Platforms/platform2/path" index="0"]
+position = Vector2( 256, 128 )
+
+[node name="Box" parent="." instance=ExtResource( 10 )]
+
+[node name="box" parent="Box" instance=ExtResource( 4 )]
+position = Vector2( 32, 32 )
+
+[node name="box2" parent="Box" instance=ExtResource( 4 )]
+position = Vector2( 256, 32 )
+
+[node name="player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 32, 96 )
+
+[node name="musicNote" parent="." instance=ExtResource( 12 )]
+position = Vector2( 192, 16 )
+
+[node name="noteData" parent="musicNote" index="2"]
+sound_note = ExtResource( 1 )
+roomTimePath = NodePath("../../RoomTime")
+
+[editable path="Tiles"]
+[editable path="Platforms/platform"]
+[editable path="Platforms/platform2"]
+[editable path="musicNote"]

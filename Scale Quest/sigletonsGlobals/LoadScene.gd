@@ -16,6 +16,8 @@ var has_load = false
 
 func _ready():
 	
+	pause_mode = Node.PAUSE_MODE_PROCESS
+	
 	set_process(false)
 
 func _process(delta):
@@ -47,6 +49,8 @@ func _process(delta):
 		has_load = false
 
 func loadScene(sceneLoad:String , currentScene):
+	
+	print_debug()
 	
 	has_load = true
 	

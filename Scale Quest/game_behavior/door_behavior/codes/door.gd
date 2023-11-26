@@ -35,11 +35,17 @@ func _input(event):
 					
 					if manager.keys >= 1:
 						
+						ServeAudio.play_sound_at_position(preload("res://assets/sfx/opening_closing_door.ogg") , global_position , "SFXs")
+						
 						manager.remove_key(1)
 						
 						_teleport_to_door()
 					
+					else: ServeAudio.play_sound_at_position(preload("res://assets/sfx/unlocking_door.ogg") , global_position , "SFXs")
+					
 				false:
+					
+					ServeAudio.play_sound_at_position(preload("res://assets/sfx/opening_closing_door.ogg") , global_position , "SFXs")
 					
 					_teleport_to_door()
 

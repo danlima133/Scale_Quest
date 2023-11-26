@@ -56,6 +56,16 @@ func _input(event):
 		if event.pressed and event.scancode == KEY_T:
 			
 			if object != null:
+				
+				match block_active:
+					
+					true:
+						
+						ServeAudio.play_sound_at_position(preload("res://assets/sfx/musical_block_on.ogg") , global_position , "SFXs")
+						
+					false:
+						
+						ServeAudio.play_sound_at_position(preload("res://assets/sfx/musical_block_off.ogg") , global_position , "SFXs")
 			
 				objectConfig.callObjects(block_active , true)
 				

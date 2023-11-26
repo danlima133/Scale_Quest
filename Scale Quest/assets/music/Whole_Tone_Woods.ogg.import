@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Whole_Tone_Woods.ogg-5838681c96fb3c7d8f69e62b051a1446.oggstr"
+
+[deps]
+
+source_file="res://assets/music/Whole_Tone_Woods.ogg"
+dest_files=[ "res://.import/Whole_Tone_Woods.ogg-5838681c96fb3c7d8f69e62b051a1446.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

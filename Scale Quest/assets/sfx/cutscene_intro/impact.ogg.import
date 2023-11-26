@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/impact.ogg-4f4da092501a1889ddd4a33172fcb443.oggstr"
+
+[deps]
+
+source_file="res://assets/sfx/cutscene_intro/impact.ogg"
+dest_files=[ "res://.import/impact.ogg-4f4da092501a1889ddd4a33172fcb443.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,5 +1,7 @@
 extends Node2D
 
+const conclusionLevelPreObject = preload("res://gameUI/levelConclusion/objetcs/conclusionLevel.tscn")
+
 const pointsLevel = {
 	"Major_Plains":0,
 	"Whole_Tone_Woods":73,
@@ -11,15 +13,41 @@ const pointsLevel = {
 onready var root_motion = $path/root_motion
 onready var move = $path/root_motion/move
 
+onready var playerTexture = $path/root_motion/player
+
+onready var baseUI = $"../UI/base"
+
 var in_move = false
 
 func _ready():
 	
 	root_motion.offset = MangerLevel.lastPoint
 	
-	if LoadScene.has_load == true: yield(LoadScene , "loadCompleted")
-	
-	_next_level()
+	match MangerLevel.levelConslused:
+		
+		false:
+			
+			if LoadScene.has_load == true: yield(LoadScene , "loadCompleted")
+			
+			if MangerLevel.conlusedGame == false: _next_level()
+		
+		true:
+			
+			if LoadScene.has_load == true: yield(LoadScene , "loadCompleted")
+			
+			MangerLevel.levelConslused = false
+			
+			var levelConlusion = conclusionLevelPreObject.instance()
+		
+			levelConlusion.get_node("name_level").text = MangerLevel.current_level
+		
+			baseUI.add_child(levelConlusion)
+		
+			yield(get_tree().create_timer(1) , "timeout")
+		
+			baseUI.get_node("conclusionLevel").queue_free()
+			
+			_next_level()
 	
 func _next_level():
 	
@@ -36,8 +64,12 @@ func _next_level():
 		elif MangerLevel.levelsCompleted[l] == true and l == "Minor_Volcano":
 			
 			_go_to_point("Finished")
+			
+			MangerLevel.conlusedGame = true
 
 func _go_to_point(key:String):
+	
+	_focusPlayer(0)
 	
 	in_move = true
 	
@@ -56,6 +88,8 @@ func _go_to_point(key:String):
 	_get_rooms_by_level()
 
 func _get_rooms_by_level():
+	
+	if MangerLevel.roomOrder.empty() == false: return
 	
 	var dir = Directory.new()
 	
@@ -86,3 +120,19 @@ func _on_area_mouse_input_event(_viewport, event, _shape_idx):
 		if event.pressed and event.button_index == 1:
 			
 			MangerLevel.load_room(owner)
+
+func _focusPlayer(value:float):
+	
+	if MangerLevel.current_level == "Finished": return
+	
+	var anim = get_tree().create_tween()
+	
+	anim.tween_property(playerTexture.material , "shader_param/line_thickness" , value , 0.2)
+
+func _on_area_mouse_mouse_entered():
+	
+	_focusPlayer(0.5)
+
+func _on_area_mouse_mouse_exited():
+	
+	_focusPlayer(0)
