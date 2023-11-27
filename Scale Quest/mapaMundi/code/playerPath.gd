@@ -23,14 +23,34 @@ func _ready():
 	
 	root_motion.offset = MangerLevel.lastPoint
 	
+	if MangerLevel.conlusedGame == true:
+		
+		if MangerLevel.levelConslused == true:
+				
+			if LoadScene.has_load == true: yield(LoadScene , "loadCompleted")
+			
+			MangerLevel.levelConslused = false
+			
+			var levelConlusion = conclusionLevelPreObject.instance()
+		
+			levelConlusion.get_node("name_level").text = MangerLevel.current_level.replace("_"  , " ")
+		
+			baseUI.add_child(levelConlusion)
+		
+			yield(get_tree().create_timer(1) , "timeout")
+		
+			baseUI.get_node("conclusionLevel").queue_free()
+			
+			MangerLevel.current_level = ""
+	
 	match MangerLevel.levelConslused:
 		
 		false:
 			
 			if LoadScene.has_load == true: yield(LoadScene , "loadCompleted")
 			
-			if MangerLevel.conlusedGame == false: _next_level()
-		
+			_next_level()
+			
 		true:
 			
 			if LoadScene.has_load == true: yield(LoadScene , "loadCompleted")
@@ -39,7 +59,7 @@ func _ready():
 			
 			var levelConlusion = conclusionLevelPreObject.instance()
 		
-			levelConlusion.get_node("name_level").text = MangerLevel.current_level
+			levelConlusion.get_node("name_level").text = MangerLevel.current_level.replace("_"  , " ")
 		
 			baseUI.add_child(levelConlusion)
 		
@@ -73,6 +93,8 @@ func _go_to_point(key:String):
 	
 	in_move = true
 	
+	if MangerLevel.current_level != key: playerTexture.play("run")
+	
 	move.interpolate_property(root_motion , "offset" , MangerLevel.lastPoint , pointsLevel[key] , 2 , Tween.TRANS_LINEAR)
 
 	move.start()
@@ -81,15 +103,23 @@ func _go_to_point(key:String):
 	
 	yield(move , "tween_all_completed")
 	
+	playerTexture.play("idle")
+	
 	in_move = false
 	
 	MangerLevel.current_level = key
 	
 	_get_rooms_by_level()
+	
+	if MangerLevel.current_level == "Finished":
+		
+		$"%Execute".active = true
 
 func _get_rooms_by_level():
 	
-	if MangerLevel.roomOrder.empty() == false: return
+	MangerLevel.roomOrder = []
+	
+#	if MangerLevel.roomOrder.empty() == false: return
 	
 	var dir = Directory.new()
 	

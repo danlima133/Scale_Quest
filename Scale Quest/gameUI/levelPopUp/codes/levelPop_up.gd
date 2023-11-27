@@ -27,6 +27,4 @@ func _setData():
 
 func _on_levelPop_up_popup_hide():
 	
-	print_debug()
-	
 	queue_free()

@@ -22,16 +22,16 @@ default_bus_layout="res://game_behavior/musicChanels/musicServer.tres"
 ServeAudio="*res://sigletonsGlobals/ServeAudio.gd"
 MangerLevel="*res://sigletonsGlobals/MangerLevel.gd"
 LoadScene="*res://sigletonsGlobals/LoadScene.gd"
+Global="*res://sigletonsGlobals/Global.gd"
 
 [display]
 
 window/size/width=320
 window/size/height=176
-window/size/resizable=false
 window/size/test_width=1024
 window/size/test_height=600
 window/stretch/mode="2d"
-window/stretch/aspect="keep_height"
+window/stretch/aspect="keep"
 
 [gui]
 
@@ -64,6 +64,11 @@ gamePause={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
+toggleFullscreen={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777254,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [physics]
 
@@ -72,6 +77,7 @@ common/enable_pause_aware_picking=true
 [rendering]
 
 quality/driver/driver_name="GLES2"
+2d/snapping/use_gpu_pixel_snap=true
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 environment/default_environment="res://default_env.tres"

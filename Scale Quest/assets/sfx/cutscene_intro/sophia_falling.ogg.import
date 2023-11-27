@@ -11,5 +11,5 @@ dest_files=[ "res://.import/sophia_falling.ogg-633065d17ed0aeb3e573491595cb622c.
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

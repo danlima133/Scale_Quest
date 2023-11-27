@@ -3,8 +3,11 @@ extends Node2D
 export(int) var speedMax
 export(int) var speedMin
 
-const cloudSmall = Rect2(140 , 0 , 90 , 50)
-const cloudBig = Rect2(0 , 50 , 140 , 80)
+var cloudsRects = [
+	Rect2(79 , 24 , 84 , 34),
+	Rect2(132 , 88 , 132 , 58),
+	Rect2(26 , 99 , 84 , 39)
+]
 
 onready var texture = $texture
 onready var ocluder = $ocluder
@@ -13,9 +16,9 @@ var speed:int
 
 func _choice_texture():
 	
-	var rects = [cloudSmall , cloudBig]
-	
-	var indexTexture = rects[randi() % rects.size()] as Rect2
+	cloudsRects.shuffle()
+
+	var indexTexture = cloudsRects[randi() % cloudsRects.size()] as Rect2
 	
 	texture.region_rect = indexTexture
 	

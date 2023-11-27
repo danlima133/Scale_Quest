@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://assets/Mapa Mundi/Flying_block/Flying_Block (3).png" type="Texture" id=1]
 [ext_resource path="res://assets/Mapa Mundi/clouds.png" type="Texture" id=2]
@@ -15,6 +15,40 @@
 [ext_resource path="res://mapaMundi/code/MapaMundi.gd" type="Script" id=13]
 [ext_resource path="res://mapaMundi/object/dootLevel.tscn" type="PackedScene" id=14]
 [ext_resource path="res://shaders/codeShaders/outlineCode.tres" type="Shader" id=15]
+[ext_resource path="res://assets/Cutscenes/Intro/sophia/caindo.png" type="Texture" id=16]
+[ext_resource path="res://assets/Cutscenes/Intro/sophia/de_pe.png" type="Texture" id=17]
+[ext_resource path="res://assets/Cutscenes/Intro/sophia/levantando_1.png" type="Texture" id=18]
+[ext_resource path="res://assets/Cutscenes/Intro/sophia/levantando_2.png" type="Texture" id=19]
+[ext_resource path="res://assets/Cutscenes/Intro/sophia/no_chao.png" type="Texture" id=20]
+[ext_resource path="res://tiles_sets/SkyTiles.tres" type="TileSet" id=21]
+[ext_resource path="res://assets/fontText/static/PixelifySans-Regular.ttf" type="DynamicFontData" id=22]
+[ext_resource path="res://assets/Cutscenes/Intro/speech_baloon.png" type="Texture" id=23]
+[ext_resource path="res://game_behavior/camera/cameraBehavior.gd" type="Script" id=24]
+[ext_resource path="res://assets/sfx/cutscene_intro/impact.ogg" type="AudioStream" id=25]
+[ext_resource path="res://assets/sfx/cutscene_intro/sophia_falling.ogg" type="AudioStream" id=26]
+[ext_resource path="res://assets/player/run_walk/run_walk (1).png" type="Texture" id=27]
+[ext_resource path="res://assets/player/run_walk/run_walk (2).png" type="Texture" id=28]
+[ext_resource path="res://assets/player/run_walk/run_walk (3).png" type="Texture" id=29]
+[ext_resource path="res://assets/player/run_walk/run_walk (4).png" type="Texture" id=30]
+[ext_resource path="res://shaders/materials/cloudsMaterial.tres" type="Material" id=31]
+
+[sub_resource type="Animation" id=19]
+resource_name = "ToConfig"
+
+[sub_resource type="Animation" id=20]
+resource_name = "ToWolrdMap"
+length = 2.0
+step = 1.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -512, 0, 223.75, 0, -223.75, 0, -1, 61.25, 1, -61.25 ),
+"times": PoolRealArray( 0, 2 )
+}
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -23,31 +57,6 @@ animations = [ {
 "name": "flying",
 "speed": 5.0
 } ]
-
-[sub_resource type="Animation" id=2]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/path = NodePath(".:position:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"points": PoolRealArray( -3, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 3 ) ]
-}
 
 [sub_resource type="Animation" id=3]
 resource_name = "flying"
@@ -82,26 +91,699 @@ animations = [ {
 "frames": [ ExtResource( 10 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "idle",
-"speed": 5.0
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ) ],
+"loop": true,
+"name": "run",
+"speed": 10.0
 } ]
 
 [sub_resource type="CircleShape2D" id=6]
 
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ ExtResource( 16 ) ],
+"loop": true,
+"name": "falling",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ) ],
+"loop": true,
+"name": "on_floor",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 19 ) ],
+"loop": false,
+"name": "stand_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ) ],
+"loop": true,
+"name": "up",
+"speed": 5.0
+} ]
+
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 23 )
+region_rect = Rect2( 0, 0, 54, 43 )
+margin_left = 5.0
+margin_right = 5.0
+margin_top = 5.0
+margin_bottom = 11.8148
+
+[sub_resource type="DynamicFont" id=13]
+size = 10
+font_data = ExtResource( 22 )
+
+[sub_resource type="Animation" id=22]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Animations/Sounds:stream")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 26 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Animations/Sounds:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "cameraToMain"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("../camera:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 247.75, -0.33914, -36.7402, 0.6, 65, 0, -1.1, -95.5, 0.194591, 16.894 ),
+"times": PoolRealArray( 0, 2 )
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "falling"
+length = 1.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerCutscene:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 527, -555 ), Vector2( 527, -555 ), Vector2( 527, -400 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerCutscene:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ "falling", "falling", "on_floor" ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("../camera")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 2.0, 0.2 ],
+"method": "shakeCamera"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../camera:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 288, -512 ), Vector2( 288, -512 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Animations/Sounds:stream")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 26 ), ExtResource( 25 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Animations/Sounds:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 2,
+"values": [ true, true ]
+}
+
+[sub_resource type="Animation" id=21]
+resource_name = "hide_balon"
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerCutscene/UI/talk_panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "show_balon"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerCutscene/UI/talk_panel:rect_size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 0.203063, 3.03143 ),
+"update": 0,
+"values": [ Vector2( 10, 16.8148 ), Vector2( 96, 64 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerCutscene/UI/talk_panel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PlayerCutscene/UI/talk_panel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "stand_up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerCutscene:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "on_floor", "stand_up" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerCutscene:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "talk"
+length = 11.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerCutscene/UI/talk_panel/text:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 1.6, 2, 3.3, 3.9, 5.5, 5.9, 7.8, 8.4, 10.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "Minor!!!", "Minor!!!", "Minor!!!", "Major!", "Majo!", "Whole Tone", "Whole Tone", "And even Gypys Major!!", "And even Gypys Major!!", "My scales muisc are gone!", "My scales muisc are gone!" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerCutscene/UI/talk_panel/text:percent_visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.7, 1.2, 1.6, 2, 2.6, 3, 3.3, 3.9, 4.5, 5, 5.5, 5.9, 6.5, 7.3, 7.8, 8.4, 9.2, 10.3, 10.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=34]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../flying_block/camera/creditsUI/base/back_ground:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../flying_block:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 283, 70 ) ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "credits"
+length = 20.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("../flying_block:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 20 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 282, 67 ), Vector2( 1664, -128 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../flying_block/camera/creditsUI/base/credit:custom_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7.5, 8, 9, 9.5, 10.5, 11, 12, 12.5, 13, 14, 14.5, 15.5, 16, 17, 18, 18.5, 19.5, 20 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../flying_block/camera/creditsUI/base/credit:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 3, 5, 7.5, 10.5, 14, 18 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "WisePotion", "WisePotion", "Thank for play", "Developers:", "Loofie - Game Designer/Art/Music", "Thomas - Art/Level Design", "Daniel Lima - Programmer/Level Design", "Stefie Justprince - Font Text
+(Thanks)" ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("..")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 20 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "creditConclused"
+} ]
+}
+
+[sub_resource type="Animation" id=35]
+resource_name = "finishedCredit"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../flying_block/camera/creditsUI/base/back_ground:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../playerPath:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../flying_block/camera/Clouds2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../main/white_dots:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../camera/Clouds:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../camera:current")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../flying_block/camera:current")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../flying_block:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 1.9 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 282, 67 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../flying_block/texture/player:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=36]
+resource_name = "normal"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../flying_block/camera/creditsUI/base/back_ground:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../flying_block/camera/creditsUI:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=25]
+resource_name = "transition"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../flying_block/camera/creditsUI/base/back_ground:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../flying_block/camera/creditsUI:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../playerPath:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.9 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../camera:current")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1.9 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../flying_block/camera:current")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1.9 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../main/white_dots:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1.9 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../camera/Clouds:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 1.9 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../flying_block/camera/Clouds2:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 1.9 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../flying_block/texture/player:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 1.9 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=26]
+resource_name = "trasitionToCredits"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../flying_block/camera/creditsUI/base/back_ground:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=27]
+animation = "credits"
+
+[sub_resource type="AnimationNodeAnimation" id=28]
+animation = "transition"
+
+[sub_resource type="AnimationNodeAnimation" id=29]
+animation = "trasitionToCredits"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=32]
+states/credits/node = SubResource( 27 )
+states/credits/position = Vector2( 584.333, 74.4074 )
+states/transition/node = SubResource( 28 )
+states/transition/position = Vector2( 89.6667, 74.8519 )
+states/trasitionToCredits/node = SubResource( 29 )
+states/trasitionToCredits/position = Vector2( 337.667, 73.2222 )
+transitions = [ "transition", "trasitionToCredits", SubResource( 30 ), "trasitionToCredits", "credits", SubResource( 31 ) ]
+start_node = "transition"
+graph_offset = Vector2( -98.0477, 0 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=33]
+
 [node name="MapaMundi" type="Node2D"]
 script = ExtResource( 13 )
 
-[node name="foreground" type="Sprite" parent="."]
-z_index = -1
-texture = ExtResource( 5 )
-centered = false
+[node name="UI" type="Node" parent="."]
 
-[node name="Clouds" type="Sprite" parent="."]
-z_index = -1
+[node name="base" type="Control" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="camera" type="Camera2D" parent="." groups=["camera"]]
+anchor_mode = 0
+current = true
+script = ExtResource( 24 )
+
+[node name="Clouds" type="Sprite" parent="camera"]
+material = ExtResource( 31 )
 texture = ExtResource( 2 )
 centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="cameraOffset" type="AnimationPlayer" parent="camera"]
+anims/ToConfig = SubResource( 19 )
+anims/ToWolrdMap = SubResource( 20 )
+
+[node name="foreground" type="Sprite" parent="."]
+position = Vector2( 888, -168 )
+scale = Vector2( 6.05, 4.35556 )
+z_index = -1
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="main" type="Sprite" parent="."]
-z_index = -1
 texture = ExtResource( 6 )
 centered = false
 
@@ -128,20 +810,53 @@ position = Vector2( 247, 88 )
 dootLevel = 3
 
 [node name="flying_block" type="Node2D" parent="."]
-position = Vector2( 282, 67 )
+position = Vector2( 283, 70 )
 z_index = -1
 
 [node name="texture" type="AnimatedSprite" parent="flying_block"]
-position = Vector2( 0, -3 )
+z_index = 1
 frames = SubResource( 1 )
 animation = "flying"
-frame = 2
+frame = 1
 playing = true
+
+[node name="player" type="Sprite" parent="flying_block/texture"]
+visible = false
+position = Vector2( -2, -18 )
+z_index = 2
+texture = ExtResource( 10 )
 
 [node name="move" type="AnimationPlayer" parent="flying_block/texture"]
 autoplay = "flying"
-anims/RESET = SubResource( 2 )
 anims/flying = SubResource( 3 )
+
+[node name="camera" type="Camera2D" parent="flying_block"]
+
+[node name="Clouds2" type="Sprite" parent="flying_block/camera"]
+visible = false
+material = ExtResource( 31 )
+texture = ExtResource( 2 )
+
+[node name="creditsUI" type="CanvasLayer" parent="flying_block/camera"]
+visible = false
+
+[node name="base" type="Control" parent="flying_block/camera/creditsUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="credit" type="Label" parent="flying_block/camera/creditsUI/base"]
+margin_top = 141.0
+margin_right = 320.0
+margin_bottom = 155.0
+custom_colors/font_color = Color( 1, 1, 1, 0 )
+text = "WisePotion"
+align = 1
+autowrap = true
+
+[node name="back_ground" type="ColorRect" parent="flying_block/camera/creditsUI/base"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
 
 [node name="playerPath" type="Node2D" parent="." groups=["playerPath"]]
 script = ExtResource( 12 )
@@ -156,8 +871,11 @@ loop = false
 
 [node name="player" type="AnimatedSprite" parent="playerPath/path/root_motion"]
 material = SubResource( 7 )
+z_index = 1
 frames = SubResource( 5 )
 animation = "idle"
+frame = 1
+playing = true
 offset = Vector2( -2, -16 )
 
 [node name="area_mouse" type="Area2D" parent="playerPath/path/root_motion/player"]
@@ -168,12 +886,74 @@ shape = SubResource( 6 )
 
 [node name="move" type="Tween" parent="playerPath/path/root_motion"]
 
-[node name="UI" type="Node" parent="."]
+[node name="Sky_Menu" type="Node2D" parent="."]
 
-[node name="base" type="Control" parent="UI"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
+[node name="Sky" type="TileMap" parent="Sky_Menu"]
+tile_set = ExtResource( 21 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( -1966056, 1, 0, -1966055, 1, 0, -1966054, 1, 0, -1966053, 1, 0, -1966052, 1, 0, -1900520, 1, 0, -1900519, 1, 0, -1900518, 1, 0, -1900517, 1, 0, -1900516, 1, 0, -1834983, 0, 0, -1572840, 1, 0, -1572839, 1, 0, -1572838, 1, 0, -1572837, 1, 0, -1572836, 1, 0, -1572835, 1, 0, -1572834, 1, 0, -1572833, 1, 0, -1572832, 1, 0, -1572831, 1, 0, -1572830, 1, 0, -1572829, 1, 0, -1572828, 1, 0, -1572827, 1, 0, -1507306, 1, 0, -1507305, 1, 0, -1507304, 1, 0, -1507303, 1, 0, -1507302, 1, 0, -1507301, 1, 0, -1507300, 1, 0, -1507299, 1, 0, -1507298, 1, 0, -1507297, 1, 0, -1507296, 1, 0, -1507295, 1, 0, -1507294, 1, 0, -1507293, 1, 0, -1507292, 1, 0, -1507291, 1, 0, -1441772, 1, 0, -1441771, 1, 0, -1441770, 1, 0, -1441769, 1, 0, -1441768, 1, 0, -1441767, 1, 0, -1441766, 1, 0, -1441765, 1, 0, -1441764, 1, 0, -1441763, 1, 0, -1441762, 1, 0, -1441761, 1, 0, -1441760, 1, 0, -1441759, 1, 0, -1441758, 1, 0, -1441757, 1, 0, -1441756, 1, 0, -1441755, 1, 0 )
+
+[node name="PlayerCutscene" type="AnimatedSprite" parent="Sky_Menu"]
+position = Vector2( 527, -555 )
+frames = SubResource( 8 )
+animation = "falling"
+playing = true
+
+[node name="UI" type="Node" parent="Sky_Menu/PlayerCutscene"]
+
+[node name="talk_panel" type="PanelContainer" parent="Sky_Menu/PlayerCutscene/UI"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 448.0
+margin_top = -464.0
+margin_right = 544.0
+margin_bottom = -400.0
+custom_styles/panel = SubResource( 12 )
+
+[node name="text" type="RichTextLabel" parent="Sky_Menu/PlayerCutscene/UI/talk_panel"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 91.0
+margin_bottom = 52.1852
+custom_colors/default_color = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_fonts/normal_font = SubResource( 13 )
+visible_characters = 0
+percent_visible = 0.0
+text = "My scales muisc are gone!"
+scroll_active = false
+
+[node name="Animations" type="AnimationPlayer" parent="Sky_Menu"]
+anims/RESET = SubResource( 22 )
+anims/cameraToMain = SubResource( 15 )
+anims/falling = SubResource( 10 )
+anims/hide_balon = SubResource( 21 )
+anims/show_balon = SubResource( 14 )
+anims/stand_up = SubResource( 11 )
+anims/talk = SubResource( 17 )
+
+[node name="Sounds" type="AudioStreamPlayer" parent="Sky_Menu/Animations"]
+stream = ExtResource( 26 )
+bus = "SFXs"
+
+[node name="CutsceneExecute" type="AnimationTree" parent="Sky_Menu/Animations"]
+anim_player = NodePath("..")
+
+[node name="CreditsFinal" type="Node2D" parent="."]
+
+[node name="Credits" type="AnimationPlayer" parent="CreditsFinal"]
+unique_name_in_owner = true
+anims/RESET = SubResource( 34 )
+anims/credits = SubResource( 24 )
+anims/finishedCredit = SubResource( 35 )
+anims/normal = SubResource( 36 )
+anims/transition = SubResource( 25 )
+anims/trasitionToCredits = SubResource( 26 )
+
+[node name="Execute" type="AnimationTree" parent="CreditsFinal/Credits"]
+unique_name_in_owner = true
+tree_root = SubResource( 32 )
+anim_player = NodePath("..")
+parameters/playback = SubResource( 33 )
 
 [connection signal="input_event" from="playerPath/path/root_motion/player/area_mouse" to="playerPath" method="_on_area_mouse_input_event"]
 [connection signal="mouse_entered" from="playerPath/path/root_motion/player/area_mouse" to="playerPath" method="_on_area_mouse_mouse_entered"]

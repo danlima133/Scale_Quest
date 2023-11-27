@@ -17,9 +17,9 @@ const levelsName:Array = [
 const rootPathLevels = "res://gameLevels/"
 
 var levelsCompleted:Dictionary = {
-	"Major_Plains":false,
-	"Whole_Tone_Woods":false,
-	"Gypsy_Major_Desert":false,
+	"Major_Plains":true,
+	"Whole_Tone_Woods":true,
+	"Gypsy_Major_Desert":true,
 	"Minor_Volcano":false
 }
 
@@ -37,7 +37,7 @@ var levelsTimeReal:Dictionary = {
 	"Minor_Volcano":0
 }
 
-var current_level:String
+var current_level:String = "Major_Plains"
 var roomOrder:Array
 
 var countRoom:int = -1
