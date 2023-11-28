@@ -1255,7 +1255,6 @@ z_index = -1
 z_index = 1
 frames = SubResource( 53 )
 animation = "flying"
-frame = 4
 playing = true
 
 [node name="player" type="Sprite" parent="flying_block/texture"]
@@ -1313,7 +1312,6 @@ loop = false
 material = SubResource( 7 )
 frames = SubResource( 5 )
 animation = "idle"
-frame = 1
 playing = true
 offset = Vector2( -2, -16 )
 
