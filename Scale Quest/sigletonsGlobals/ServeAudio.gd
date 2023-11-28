@@ -4,6 +4,10 @@ signal sound_finished(sound)
 
 var soundRoomCount:float
 
+func _ready():
+	
+	pause_mode = Node.PAUSE_MODE_PROCESS
+
 func play_sound(sound:AudioStream , chanel:String = "Master" , volumedb:float = 1):
 	
 	var soundPlayer = AudioStreamPlayer.new()

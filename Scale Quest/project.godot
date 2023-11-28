@@ -11,7 +11,12 @@ config_version=4
 [application]
 
 config/name="Scale Quest"
-config/icon="res://icon.png"
+run/main_scene="res://mapaMundi/object/MapaMundi.tscn"
+boot_splash/image="res://assets/logo WisePotion/Full_logo.png"
+boot_splash/use_filter=false
+boot_splash/bg_color=Color( 0.529412, 0, 1, 1 )
+config/icon="res://assets/icon/48x48.png"
+config/windows_native_icon="res://assets/icon/icon.ico"
 
 [audio]
 
@@ -19,9 +24,10 @@ default_bus_layout="res://game_behavior/musicChanels/musicServer.tres"
 
 [autoload]
 
+LoadScene="*res://sigletonsGlobals/LoadScene.gd"
+ServeData="*res://sigletonsGlobals/ServeData.gd"
 ServeAudio="*res://sigletonsGlobals/ServeAudio.gd"
 MangerLevel="*res://sigletonsGlobals/MangerLevel.gd"
-LoadScene="*res://sigletonsGlobals/LoadScene.gd"
 Global="*res://sigletonsGlobals/Global.gd"
 
 [display]

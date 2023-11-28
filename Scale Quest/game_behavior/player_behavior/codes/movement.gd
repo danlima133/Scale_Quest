@@ -1,5 +1,11 @@
 extends Node
 
+###pre objects:
+
+const splashPreEffect = preload("res://gameEffects/effects/smokeSplash.tscn")
+
+### end
+
 ### nodes:
 
 onready var moveObject = get_parent()
@@ -36,6 +42,9 @@ var inertia = Vector2(10 , 10)
 
 var on_ledder = false
 var gravity = true
+
+var canEffect = true
+var playEffect = false
 
 ###
 
@@ -160,6 +169,8 @@ func _get_input():
 			elif direction.y > 0:
 				
 				if floorState == true:
+					
+#					splashEffectFloor()
 				
 					change_state("floor")
 				
@@ -225,7 +236,39 @@ func change_state(state_key:String):
 
 ### end
 
+func splashEffectFloor():
+	
+	if canEffect == false: return
+	
+	canEffect = false
+	
+	var effect = splashPreEffect.instance()
+	
+	effect.connect("effectDethed" , self , "_end_effect")
+	
+	effect.emitting = true
+	
+	effect.global_position = moveObject.global_position + Vector2(0 , 8)
+	
+	moveObject.owner.add_child(effect)
+
+func _end_effect(obj):
+	
+	canEffect = true
+	
+	obj.queue_free()
+
 func _physics_process(delta):
+	
+	if direction.y < 0:
+		
+		playEffect = true
+	
+	if moveObject.is_on_floor() and playEffect == true:
+		
+		playEffect = false
+		
+		splashEffectFloor()
 	
 	#call movement funcs:
 	

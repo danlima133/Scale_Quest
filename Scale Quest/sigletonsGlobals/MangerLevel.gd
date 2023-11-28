@@ -17,9 +17,9 @@ const levelsName:Array = [
 const rootPathLevels = "res://gameLevels/"
 
 var levelsCompleted:Dictionary = {
-	"Major_Plains":true,
-	"Whole_Tone_Woods":true,
-	"Gypsy_Major_Desert":true,
+	"Major_Plains":false,
+	"Whole_Tone_Woods":false,
+	"Gypsy_Major_Desert":false,
 	"Minor_Volcano":false
 }
 
@@ -75,6 +75,8 @@ func load_room(current_scene):
 	
 	if countRoom > (roomOrder.size() - 1):
 		
+		print_debug()
+		
 		ServeAudio.stop_SounRoom(true)
 		
 		levelsCompleted[current_level] = true
@@ -86,6 +88,8 @@ func load_room(current_scene):
 #		current_level = ""
 		
 		LoadScene.loadScene("res://mapaMundi/object/MapaMundi.tscn" , current_scene)
+		
+		ServeData.saveGame()
 		
 		return
 	

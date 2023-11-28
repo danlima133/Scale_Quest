@@ -21,6 +21,8 @@ var in_move = false
 
 func _ready():
 	
+	ServeData.loadGame()
+	
 	root_motion.offset = MangerLevel.lastPoint
 	
 	if MangerLevel.conlusedGame == true:
@@ -81,11 +83,13 @@ func _next_level():
 			
 			break
 		
-		elif MangerLevel.levelsCompleted[l] == true and l == "Minor_Volcano":
+		elif MangerLevel.levelsCompleted[l] == true and l == "Minor_Volcano" and Global.hasCredits:
 			
 			_go_to_point("Finished")
 			
 			MangerLevel.conlusedGame = true
+			
+			ServeData.saveGame()
 
 func _go_to_point(key:String):
 	
@@ -111,7 +115,11 @@ func _go_to_point(key:String):
 	
 	_get_rooms_by_level()
 	
-	if MangerLevel.current_level == "Finished":
+	ServeData.saveGame()
+	
+	if MangerLevel.current_level == "Finished" and Global.hasCredits:
+		
+		Global.hasCredits = false
 		
 		$"%Execute".active = true
 

@@ -22,8 +22,10 @@ func _on_dootLevel_mouse_exited():
 
 func _on_dootLevel_input_event(_viewport, event, _shape_idx):
 	
-	if event is InputEventMouseButton and MangerLevel.conlusedGame == true:
-		
-		if event.pressed and event.button_index == BUTTON_LEFT:
+	pass
 	
-			get_tree().call_group("playerPath" , "_go_to_point" , MangerLevel.levelsName[dootLevel])
+#	if event is InputEventMouseButton and MangerLevel.conlusedGame == true:
+#
+#		if event.pressed and event.button_index == BUTTON_LEFT:
+#
+#			get_tree().call_group("playerPath" , "_go_to_point" , MangerLevel.levelsName[dootLevel])

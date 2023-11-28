@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Mapa_Mundi.ogg-52499dab149e0ee846baf460d601f129.oggstr"
+
+[deps]
+
+source_file="res://assets/music/Mapa_Mundi.ogg"
+dest_files=[ "res://.import/Mapa_Mundi.ogg-52499dab149e0ee846baf460d601f129.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
