@@ -9,6 +9,8 @@ onready var game_name = $MainGame/base/gameName
 onready var buttons = $MainGame/base/buttons
 onready var indic = $MainGame/base/indic
 
+onready var music_player = $"%MusicPlayer"
+
 func _ready():
 	
 	ServeData.loadGame()
@@ -35,6 +37,8 @@ func _ready():
 			else:
 				
 				Maincamera.global_position = Vector2.ZERO
+	
+			if MangerLevel.levelConslused == false: music_player.playMusic()
 
 func creditConclused():
 	
@@ -49,6 +53,8 @@ func creditConclused():
 	Global.hasCredits = false
 	
 	ServeData.saveGame()
+	
+	$"%MusicPlayer".playMusic()
 
 func finishedCutscene():
 	

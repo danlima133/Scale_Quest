@@ -1,11 +1,11 @@
 {
     ".":
     {
-        "active":
+        "desactive":
         [
             "sent_platform"
         ],
-        "desactive":
+        "active":
         [
             "call_platform"
         ]

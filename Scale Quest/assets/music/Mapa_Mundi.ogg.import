@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Mapa_Mundi.ogg-52499dab149e0ee846baf460d601f129.oggs
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

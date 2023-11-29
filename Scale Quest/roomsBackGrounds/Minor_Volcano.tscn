@@ -30,7 +30,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Node2D" type="Node2D"]
+[node name="Minor_Volcano" type="Node2D"]
 
 [node name="main" type="Sprite" parent="."]
 texture = ExtResource( 16 )
@@ -40,6 +40,6 @@ centered = false
 position = Vector2( 104, 82 )
 frames = SubResource( 1 )
 animation = "lava"
-frame = 8
+frame = 14
 playing = true
 centered = false

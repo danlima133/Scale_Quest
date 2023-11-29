@@ -4,12 +4,25 @@ export(NodePath) var doorOutputPath
 export(bool) var need_key = false
 
 const doorClosedTexture = preload("res://assets/objects/doorClosed.tres")
+const doorOpenTexture = preload("res://assets/objects/door.tres")
 
 onready var texture = $texture
 
 var outputDoor:Object
 
 var object = null
+
+func _setTexture():
+	
+	match need_key:
+		
+		true:
+			
+			texture.texture = doorClosedTexture
+		
+		false:
+			
+			texture.texture = doorOpenTexture
 
 func _get_door():
 	
@@ -40,6 +53,10 @@ func _input(event):
 						manager.remove_key(1)
 						
 						_teleport_to_door()
+						
+						need_key = false
+						
+						_setTexture()
 					
 					else: ServeAudio.play_sound_at_position(preload("res://assets/sfx/unlocking_door.ogg") , global_position , "SFXs")
 					
@@ -53,9 +70,7 @@ func _ready():
 	
 	_get_door()
 	
-	if need_key == true:
-		
-		texture.texture = doorClosedTexture
+	_setTexture()
 
 func _on_door_body_entered(body):
 	

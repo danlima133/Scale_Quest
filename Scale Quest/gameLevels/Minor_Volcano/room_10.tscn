@@ -1,0 +1,147 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://gameUI/roomInfo/object/roomInfo.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game_behavior/roomComponets/Door.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gameUI/room/roomUI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://gameMangers/TimeRoom/objects/RoomTime.tscn" type="PackedScene" id=4]
+[ext_resource path="res://gameMangers/Collectables/objects/ManagerCollectables.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game_behavior/collectables/key/object/key.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game_behavior/roomComponets/Box.tscn" type="PackedScene" id=7]
+[ext_resource path="res://game_behavior/roomComponets/RoomObjects.tscn" type="PackedScene" id=8]
+[ext_resource path="res://game_behavior/box_behavior/objects/box.tscn" type="PackedScene" id=9]
+[ext_resource path="res://game_behavior/door_behavior/objects/door.tscn" type="PackedScene" id=10]
+[ext_resource path="res://game_behavior/roomComponets/Tiles.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/sfx/notes sfx/minor volcano/1_do.ogg" type="AudioStream" id=12]
+[ext_resource path="res://game_behavior/collectables/musicNotes/musicNote/object/musicNote.tscn" type="PackedScene" id=13]
+[ext_resource path="res://game_behavior/player_behavior/objects/player.tscn" type="PackedScene" id=14]
+[ext_resource path="res://roomsBackGrounds/Minor_Volcano.tscn" type="PackedScene" id=15]
+[ext_resource path="res://game_behavior/roomComponets/MusicBlock.tscn" type="PackedScene" id=16]
+[ext_resource path="res://gameMangers/MuscialNotes/objects/ConfigNoteMusical.tscn" type="PackedScene" id=17]
+[ext_resource path="res://game_behavior/platform_behavior/objects/platform.tscn" type="PackedScene" id=18]
+[ext_resource path="res://game_behavior/roomComponets/Platforms.tscn" type="PackedScene" id=19]
+[ext_resource path="res://game_behavior/musicBlock_behavior/objects/MusicBlock.tscn" type="PackedScene" id=20]
+[ext_resource path="res://tiles_sets/MinorVolcano.tres" type="TileSet" id=21]
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 32, 80, 0, 0, 0, 0, 32, 160 )
+}
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 208, 160, 0, 0, 0, 0, 208, 64 )
+}
+
+[node name="room_1" type="Node2D"]
+
+[node name="Minor_Volcano" parent="." instance=ExtResource( 15 )]
+
+[node name="roomInfo" parent="." instance=ExtResource( 1 )]
+
+[node name="roomUI" parent="." instance=ExtResource( 3 )]
+roomTime = NodePath("../RoomTime")
+
+[node name="RoomTime" parent="." instance=ExtResource( 4 )]
+
+[node name="ManagerCollectables" parent="." instance=ExtResource( 5 )]
+
+[node name="Tiles" parent="." instance=ExtResource( 11 )]
+tile_set = ExtResource( 21 )
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 65536, 0, 0, 65555, 0, 0, 131072, 0, 0, 131085, 0, 0, 131086, 0, 0, 131087, 0, 0, 131091, 0, 0, 196608, 0, 0, 196624, 0, 0, 196625, 0, 0, 196626, 0, 0, 196627, 0, 0, 262144, 0, 0, 262150, 0, 0, 262152, 0, 0, 262153, 0, 0, 262154, 0, 0, 262155, 0, 0, 262163, 0, 0, 327680, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327690, 0, 0, 327691, 0, 0, 327699, 0, 0, 393216, 0, 0, 393221, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393235, 0, 0, 458752, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458763, 0, 0, 458771, 0, 0, 524288, 0, 0, 524293, 0, 0, 524299, 0, 0, 524307, 0, 0, 589824, 0, 0, 589829, 0, 0, 589843, 0, 0, 655360, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655375, 0, 0, 655376, 0, 0, 655377, 0, 0, 655378, 0, 0, 655379, 0, 0 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Tiles/collisionBody" index="0"]
+polygon = PoolVector2Array( 0, 0, 320, 0, 320, 176, 0, 176, 0, 160, 304, 160, 304, 16, 16, 16, 16, 160, 0, 160 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Tiles/collisionBody" index="1"]
+polygon = PoolVector2Array( 96, 64, 112, 64, 112, 96, 96, 96, 96, 160, 80, 160, 80, 128, 48, 128, 48, 112, 80, 112, 80, 96, 48, 96, 48, 80, 96, 80 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Tiles/collisionBody" index="2"]
+polygon = PoolVector2Array( 128, 64, 192, 64, 192, 144, 176, 144, 176, 112, 144, 112, 144, 96, 160, 96, 160, 80, 128, 80 )
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Tiles/collisionBody" index="3"]
+polygon = PoolVector2Array( 208, 32, 256, 32, 256, 48, 208, 48 )
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Tiles/collisionBody" index="4"]
+polygon = PoolVector2Array( 256, 48, 304, 48, 304, 64, 256, 64 )
+
+[node name="RoomObjects" parent="." instance=ExtResource( 8 )]
+
+[node name="key" parent="RoomObjects" instance=ExtResource( 6 )]
+position = Vector2( 64, 96 )
+
+[node name="Box" parent="." instance=ExtResource( 7 )]
+
+[node name="box" parent="Box" instance=ExtResource( 9 )]
+position = Vector2( 224, 16 )
+
+[node name="box2" parent="Box" instance=ExtResource( 9 )]
+position = Vector2( 96, 48 )
+
+[node name="Platforms" parent="." instance=ExtResource( 19 )]
+
+[node name="platform" parent="Platforms" instance=ExtResource( 18 )]
+dataPath = "res://game_behavior/platform_behavior/metaData/platformProprieties.platformData"
+
+[node name="path" parent="Platforms/platform" index="0"]
+curve = SubResource( 2 )
+
+[node name="root_motion" parent="Platforms/platform/path" index="0"]
+position = Vector2( 32, 80 )
+
+[node name="ConfigNoteMusical" parent="Platforms/platform" instance=ExtResource( 17 )]
+refNoteMusicalPath = NodePath("../../../MusicBlock/MusicBlock3")
+refReciveDataPath = NodePath("..")
+configNoteMusicalPath = "res://gameMangers/MuscialNotes/configFiles/scheme1.MGconfig"
+
+[node name="platform2" parent="Platforms" instance=ExtResource( 18 )]
+dataPath = "res://game_behavior/platform_behavior/metaData/platformProprieties.platformData"
+
+[node name="path" parent="Platforms/platform2" index="0"]
+curve = SubResource( 1 )
+
+[node name="root_motion" parent="Platforms/platform2/path" index="0"]
+position = Vector2( 208, 160 )
+
+[node name="ConfigNoteMusical" parent="Platforms/platform2" instance=ExtResource( 17 )]
+refNoteMusicalPath = NodePath("../../../MusicBlock/MusicBlock")
+refReciveDataPath = NodePath("..")
+configNoteMusicalPath = "res://gameMangers/MuscialNotes/configFiles/schme2.MGconfig"
+
+[node name="MusicBlock" parent="." instance=ExtResource( 16 )]
+
+[node name="MusicBlock" parent="MusicBlock" instance=ExtResource( 20 )]
+position = Vector2( 48, 144 )
+configRefPath = NodePath("../../Platforms/platform/ConfigNoteMusical")
+
+[node name="MusicBlock3" parent="MusicBlock" instance=ExtResource( 20 )]
+position = Vector2( 224, 144 )
+configRefPath = NodePath("../../Platforms/platform2/ConfigNoteMusical")
+
+[node name="Door" parent="." instance=ExtResource( 2 )]
+
+[node name="door" parent="Door" instance=ExtResource( 10 )]
+position = Vector2( 288, 48 )
+scale = Vector2( -1, 1 )
+doorOutputPath = NodePath("../door2")
+
+[node name="door2" parent="Door" instance=ExtResource( 10 )]
+position = Vector2( 288, 160 )
+scale = Vector2( -1, 1 )
+doorOutputPath = NodePath("../door")
+need_key = true
+
+[node name="musicNote" parent="." instance=ExtResource( 13 )]
+position = Vector2( 144, 80 )
+
+[node name="noteData" parent="musicNote" index="2"]
+noteRegion = 3
+sound_note = ExtResource( 12 )
+roomTimePath = NodePath("../../RoomTime")
+
+[node name="player" parent="." instance=ExtResource( 14 )]
+position = Vector2( 64, 64 )
+
+[editable path="Tiles"]
+[editable path="Platforms/platform"]
+[editable path="Platforms/platform2"]
+[editable path="musicNote"]

@@ -46,6 +46,10 @@ var gravity = true
 var canEffect = true
 var playEffect = false
 
+var coyoteTimer = 0.1
+var countCoyoteTimer = 0
+var can_jump = false
+
 ###
 
 ### (func) getting fileData and func _read:
@@ -150,7 +154,11 @@ func _get_input():
 	
 			if Input.is_action_just_pressed("playerJump"):
 				
-				if moveObject.is_on_floor():
+				if moveObject.is_on_floor() or countCoyoteTimer > 0 and can_jump:
+					
+					can_jump = false
+					
+					countCoyoteTimer = coyoteTimer
 					
 					ServeAudio.play_sound_at_position(preload("res://assets/sfx/jump.ogg") , moveObject.global_position , "SFXs")
 					
@@ -259,6 +267,18 @@ func _end_effect(obj):
 	obj.queue_free()
 
 func _physics_process(delta):
+	
+	print(countCoyoteTimer)
+	
+	if not moveObject.is_on_floor():
+		
+		countCoyoteTimer = coyoteTimer
+	
+	else: can_jump = true
+	
+	if countCoyoteTimer > 0:
+		
+		countCoyoteTimer -= delta
 	
 	if direction.y < 0:
 		

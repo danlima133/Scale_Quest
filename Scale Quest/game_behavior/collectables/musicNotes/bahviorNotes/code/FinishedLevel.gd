@@ -10,10 +10,10 @@ enum noteType{
 signal levelCompleted
 
 const notesTextures = [
-preload("res://assets/tile_major_plains/notesMusic/note_1.tres"),
-preload("res://assets/tile_major_plains/notesMusic/note_3.tres"),
-preload("res://assets/tile_major_plains/notesMusic/note_4.tres"),
-preload("res://assets/tile_major_plains/notesMusic/note_2.tres")
+preload("res://assets/notesMusic/note_1.tres"),
+preload("res://assets/notesMusic/note_3.tres"),
+preload("res://assets/notesMusic/note_4.tres"),
+preload("res://assets/notesMusic/note_2.tres")
 ]
 
 

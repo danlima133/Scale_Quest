@@ -69,6 +69,10 @@ func _pressedButton():
 			
 			camera_offset.play("ToWolrdMap")
 			
+			$"%MusicPlayer".current_local = $"%MusicPlayer".local.MapaMundi
+			
+			$"%MusicPlayer".playMusic()
+			
 		1:
 			
 			camera_offset.play("ToConfig")

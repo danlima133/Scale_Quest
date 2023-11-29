@@ -55,6 +55,9 @@ func _ready():
 			
 		true:
 			
+			$"%MusicPlayer".current_local = $"%MusicPlayer".local.MapaMundi
+			$"%MusicPlayer".playMusic()
+			
 			if LoadScene.has_load == true: yield(LoadScene , "loadCompleted")
 			
 			MangerLevel.levelConslused = false
@@ -119,6 +122,8 @@ func _go_to_point(key:String):
 	
 	if MangerLevel.current_level == "Finished" and Global.hasCredits:
 		
+		$"%MusicPlayer".stopMusic(true)
+		
 		Global.hasCredits = false
 		
 		$"%Execute".active = true
@@ -156,6 +161,8 @@ func _on_area_mouse_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and in_move == false:
 		
 		if event.pressed and event.button_index == 1:
+			
+			$"%MusicPlayer".stopMusic(true)
 			
 			MangerLevel.load_room(owner)
 

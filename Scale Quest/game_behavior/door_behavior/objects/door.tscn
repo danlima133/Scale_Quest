@@ -19,7 +19,7 @@ position = Vector2( 0, -10.5 )
 shape = SubResource( 1 )
 
 [node name="position" type="Position2D" parent="."]
-position = Vector2( 16, -8 )
+position = Vector2( 0, -16 )
 
 [connection signal="body_entered" from="." to="." method="_on_door_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_door_body_exited"]
