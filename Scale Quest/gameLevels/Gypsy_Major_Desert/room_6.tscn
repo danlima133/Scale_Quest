@@ -1,0 +1,139 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://game_behavior/box_behavior/objects/box.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game_behavior/roomComponets/Box.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game_behavior/door_behavior/objects/door.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game_behavior/roomComponets/Door.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game_behavior/platform_behavior/objects/platform.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game_behavior/roomComponets/Platforms.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game_behavior/roomComponets/Tiles.tscn" type="PackedScene" id=7]
+[ext_resource path="res://gameMangers/Collectables/objects/ManagerCollectables.tscn" type="PackedScene" id=8]
+[ext_resource path="res://gameMangers/TimeRoom/objects/RoomTime.tscn" type="PackedScene" id=9]
+[ext_resource path="res://gameUI/roomInfo/object/roomInfo.tscn" type="PackedScene" id=10]
+[ext_resource path="res://gameUI/room/roomUI.tscn" type="PackedScene" id=11]
+[ext_resource path="res://roomsBackGrounds/Gypsy_Major_Desert.tscn" type="PackedScene" id=12]
+[ext_resource path="res://tiles_sets/GypysMajorDesert.tres" type="TileSet" id=13]
+[ext_resource path="res://game_behavior/roomComponets/RoomObjects.tscn" type="PackedScene" id=14]
+[ext_resource path="res://game_behavior/collectables/key/object/key.tscn" type="PackedScene" id=15]
+[ext_resource path="res://game_behavior/collectables/musicNotes/musicNote/object/musicNote.tscn" type="PackedScene" id=16]
+[ext_resource path="res://assets/sfx/notes sfx/gipsy  major desert/6_sol.ogg" type="AudioStream" id=17]
+[ext_resource path="res://game_behavior/player_behavior/objects/player.tscn" type="PackedScene" id=18]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 243, 48, 0, 0, 0, 0, 176, 48 )
+}
+
+[node name="room_6" type="Node2D"]
+
+[node name="Gypsy_Major_Desert" parent="." instance=ExtResource( 12 )]
+visible = false
+
+[node name="roomInfo" parent="." instance=ExtResource( 10 )]
+
+[node name="roomUI" parent="." instance=ExtResource( 11 )]
+roomTime = NodePath("../RoomTime")
+
+[node name="RoomTime" parent="." instance=ExtResource( 9 )]
+
+[node name="ManagerCollectables" parent="." instance=ExtResource( 8 )]
+
+[node name="Tiles" parent="." instance=ExtResource( 7 )]
+tile_set = ExtResource( 13 )
+tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 16, 1, 0, 17, 1, 0, 18, 1, 0, 19, 1, 0, 65536, 1, 0, 65541, 1, 0, 65555, 1, 0, 131072, 1, 0, 131077, 1, 0, 131080, 1, 0, 131091, 1, 0, 196608, 1, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 196614, 1, 0, 196615, 1, 0, 196616, 1, 0, 196627, 1, 0, 262144, 1, 0, 262147, 1, 0, 262149, 1, 0, 262152, 1, 0, 262163, 1, 0, 327680, 1, 0, 327681, 1, 0, 327682, 1, 0, 327685, 1, 0, 327696, 1, 0, 327697, 1, 0, 327698, 1, 0, 327699, 1, 0, 393216, 1, 0, 393218, 1, 0, 393221, 1, 0, 393222, 1, 0, 393223, 1, 0, 393224, 1, 0, 393235, 1, 0, 458752, 1, 0, 458755, 1, 0, 458756, 1, 0, 458757, 1, 0, 458760, 1, 0, 458771, 1, 0, 524288, 1, 0, 524293, 1, 0, 524296, 1, 0, 524307, 1, 0, 589824, 1, 0, 589825, 1, 0, 589826, 1, 0, 589829, 1, 0, 589832, 1, 0, 589843, 1, 0, 655360, 2, 0, 655361, 2, 0, 655362, 2, 0, 655363, 2, 0, 655364, 2, 0, 655365, 2, 0, 655366, 2, 0, 655367, 2, 0, 655368, 2, 0, 655369, 2, 0, 655370, 2, 0, 655371, 2, 0, 655372, 2, 0, 655373, 2, 0, 655374, 2, 0, 655375, 2, 0, 655376, 2, 0, 655377, 2, 0, 655378, 2, 0, 655379, 2, 0 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Tiles/collisionBody" index="0"]
+polygon = PoolVector2Array( 0, 0, 320, 0, 320, 176, 0, 176, 0, 160, 304, 160, 304, 96, 256, 96, 256, 80, 304, 80, 304, 16, 16, 16, 16, 160, 0, 160 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Tiles/collisionBody" index="1"]
+polygon = PoolVector2Array( 96, 16, 96, 160, 80, 160, 80, 16 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Tiles/collisionBody" index="2"]
+polygon = PoolVector2Array( 144, 32, 144, 80, 128, 80, 128, 64, 64, 64, 64, 80, 48, 80, 48, 48, 128, 48, 128, 32 )
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Tiles/collisionBody" index="3"]
+polygon = PoolVector2Array( 96, 96, 144, 96, 144, 160, 128, 160, 128, 112, 96, 112 )
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Tiles/collisionBody" index="4"]
+polygon = PoolVector2Array( 16, 80, 48, 80, 48, 96, 48, 112, 80, 112, 80, 128, 48, 128, 48, 112, 32, 112, 32, 96, 16, 96 )
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="Tiles/collisionBody" index="5"]
+polygon = PoolVector2Array( 16, 144, 48, 144, 48, 160, 16, 160 )
+
+[node name="Door" parent="." instance=ExtResource( 4 )]
+
+[node name="door" parent="Door" instance=ExtResource( 3 )]
+position = Vector2( 32, 144 )
+doorOutputPath = NodePath("../door4")
+
+[node name="door2" parent="Door" instance=ExtResource( 3 )]
+position = Vector2( 64, 112 )
+doorOutputPath = NodePath("../door6")
+
+[node name="door3" parent="Door" instance=ExtResource( 3 )]
+position = Vector2( 32, 80 )
+doorOutputPath = NodePath("../door8")
+need_key = true
+
+[node name="door4" parent="Door" instance=ExtResource( 3 )]
+position = Vector2( 112, 160 )
+doorOutputPath = NodePath("../door")
+
+[node name="door5" parent="Door" instance=ExtResource( 3 )]
+position = Vector2( 64, 160 )
+doorOutputPath = NodePath("../door7")
+
+[node name="door6" parent="Door" instance=ExtResource( 3 )]
+position = Vector2( 112, 96 )
+doorOutputPath = NodePath("../door2")
+need_key = true
+
+[node name="door7" parent="Door" instance=ExtResource( 3 )]
+position = Vector2( 64, 48 )
+doorOutputPath = NodePath("../door5")
+
+[node name="door8" parent="Door" instance=ExtResource( 3 )]
+position = Vector2( 112, 48 )
+doorOutputPath = NodePath("../door3")
+
+[node name="Platforms" parent="." instance=ExtResource( 6 )]
+
+[node name="platform" parent="Platforms" instance=ExtResource( 5 )]
+dataPath = "res://game_behavior/platform_behavior/metaData/style11.platformData"
+
+[node name="path" parent="Platforms/platform" index="0"]
+curve = SubResource( 1 )
+
+[node name="root_motion" parent="Platforms/platform/path" index="0"]
+position = Vector2( 256, 48 )
+
+[node name="Box" parent="." instance=ExtResource( 2 )]
+
+[node name="box" parent="Box" instance=ExtResource( 1 )]
+position = Vector2( 221, 27 )
+
+[node name="box2" parent="Box" instance=ExtResource( 1 )]
+position = Vector2( 253, 27 )
+
+[node name="RoomObjects" parent="." instance=ExtResource( 14 )]
+
+[node name="key" parent="RoomObjects" instance=ExtResource( 15 )]
+position = Vector2( 112, 112 )
+
+[node name="key2" parent="RoomObjects" instance=ExtResource( 15 )]
+position = Vector2( 224, 80 )
+
+[node name="musicNote" parent="." instance=ExtResource( 16 )]
+position = Vector2( 64, 64 )
+
+[node name="noteData" parent="musicNote" index="2"]
+noteRegion = 2
+sound_note = ExtResource( 17 )
+roomTimePath = NodePath("../../RoomTime")
+
+[node name="player" parent="." instance=ExtResource( 18 )]
+position = Vector2( 64, 144 )
+
+[editable path="Tiles"]
+[editable path="Platforms/platform"]
+[editable path="musicNote"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/fontText/static/PixelifySans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/objects/key.tres" type="Texture" id=2]
 [ext_resource path="res://gameUI/room/code/roomUI.gd" type="Script" id=3]
+[ext_resource path="res://assets/UI/clock.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 13
@@ -20,7 +21,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="keys" type="HBoxContainer" parent="base"]
-margin_right = 24.0
+anchor_right = 1.0
+margin_left = 2.0
+margin_right = 2.0
 margin_bottom = 16.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -44,13 +47,27 @@ text = "#"
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -16.0
+margin_left = 6.0
+margin_top = -28.0
+margin_right = 6.0
+margin_bottom = 4.0
+custom_constants/separation = -6
+alignment = 2
 
 [node name="timerCount" type="Label" parent="base/timer"]
-margin_right = 320.0
-margin_bottom = 16.0
-size_flags_horizontal = 3
+margin_left = 267.0
+margin_top = 8.0
+margin_right = 294.0
+margin_bottom = 24.0
 custom_fonts/font = SubResource( 2 )
 text = "###"
 align = 2
-autowrap = true
+
+[node name="clock" type="TextureRect" parent="base/timer"]
+margin_left = 288.0
+margin_right = 320.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+size_flags_horizontal = 9
+texture = ExtResource( 4 )
+stretch_mode = 6

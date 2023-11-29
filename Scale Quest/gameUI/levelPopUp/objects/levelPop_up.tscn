@@ -1,9 +1,27 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://gameUI/levelPopUp/codes/levelPop_up.gd" type="Script" id=1]
+[ext_resource path="res://assets/fontText/static/PixelifySans-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/UI/balloon.png" type="Texture" id=3]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 64, 48 )
+margin_left = 4.0
+margin_right = 4.0
+margin_top = 4.0
+margin_bottom = 7.0
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="DynamicFont" id=2]
+size = 8
+font_data = ExtResource( 2 )
 
 [node name="levelPop_up" type="Popup"]
-margin_right = 116.0
+margin_right = 82.0
 margin_bottom = 61.0
 rect_pivot_offset = Vector2( 58, 32 )
 mouse_filter = 2
@@ -14,53 +32,64 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -58.5
-margin_top = -32.0
-margin_right = 58.5
-margin_bottom = 32.0
+margin_left = -36.0
+margin_top = -25.5
+margin_right = 38.0
+margin_bottom = 26.5
+custom_styles/panel = SubResource( 1 )
 
 [node name="content" type="VBoxContainer" parent="panel"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 110.0
-margin_bottom = 57.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 70.0
+margin_bottom = 45.0
 
 [node name="name_level" type="Label" parent="panel/content"]
-margin_right = 103.0
-margin_bottom = 14.0
+margin_right = 66.0
+margin_bottom = 11.0
+custom_colors/font_color = Color( 0.435294, 0, 0.192157, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "name Level"
 align = 1
 
 [node name="div_1" type="HBoxContainer" parent="panel/content"]
-margin_top = 18.0
-margin_right = 103.0
-margin_bottom = 32.0
+margin_top = 15.0
+margin_right = 66.0
+margin_bottom = 26.0
 
 [node name="tag" type="Label" parent="panel/content/div_1"]
-margin_right = 45.0
-margin_bottom = 14.0
-text = "rooms:"
+margin_right = 23.0
+margin_bottom = 11.0
+custom_colors/font_color = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Roms:"
 
 [node name="count" type="Label" parent="panel/content/div_1"]
-margin_left = 49.0
-margin_right = 58.0
-margin_bottom = 14.0
+margin_left = 27.0
+margin_right = 32.0
+margin_bottom = 11.0
+custom_colors/font_color = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "#"
 
 [node name="div_2" type="HBoxContainer" parent="panel/content"]
-margin_top = 36.0
-margin_right = 103.0
-margin_bottom = 50.0
+margin_top = 30.0
+margin_right = 66.0
+margin_bottom = 41.0
 
 [node name="tag" type="Label" parent="panel/content/div_2"]
-margin_right = 90.0
-margin_bottom = 14.0
-text = "Time Avarage:"
+margin_right = 41.0
+margin_bottom = 11.0
+custom_colors/font_color = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Time Final:"
 
 [node name="count" type="Label" parent="panel/content/div_2"]
-margin_left = 94.0
-margin_right = 103.0
-margin_bottom = 14.0
+margin_left = 45.0
+margin_right = 50.0
+margin_bottom = 11.0
+custom_colors/font_color = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "#"
 
 [connection signal="popup_hide" from="." to="." method="_on_levelPop_up_popup_hide"]

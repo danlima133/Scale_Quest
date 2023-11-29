@@ -79,6 +79,7 @@ tracks/1/keys = {
 radius = 8.0
 
 [node name="musicNote" type="Area2D"]
+z_index = 1
 __meta__ = {
 "_edit_group_": true
 }

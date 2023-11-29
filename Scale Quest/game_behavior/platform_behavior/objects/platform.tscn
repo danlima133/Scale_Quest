@@ -5,7 +5,7 @@
 
 [sub_resource type="Curve2D" id=4]
 _data = {
-"points": PoolVector2Array(  )
+"points": PoolVector2Array( 0, 0, 0, 0, 96, 32, 0, 0, 0, 0, 240, 96 )
 }
 
 [sub_resource type="Animation" id=3]
@@ -31,6 +31,7 @@ script = ExtResource( 2 )
 curve = SubResource( 4 )
 
 [node name="root_motion" type="PathFollow2D" parent="path"]
+position = Vector2( 96, 32 )
 rotate = false
 loop = false
 

@@ -1285,7 +1285,6 @@ z_index = -1
 z_index = 1
 frames = SubResource( 53 )
 animation = "flying"
-frame = 2
 playing = true
 
 [node name="player" type="Sprite" parent="flying_block/texture"]
@@ -1468,7 +1467,6 @@ __meta__ = {
 }
 
 [node name="gameName" type="TextureRect" parent="MainGame/base"]
-modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.25
 anchor_top = 0.057
 anchor_right = 0.75
@@ -1483,7 +1481,6 @@ __meta__ = {
 }
 
 [node name="buttons" type="VBoxContainer" parent="MainGame/base"]
-modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -1498,11 +1495,11 @@ custom_constants/separation = 5
 margin_right = 120.0
 margin_bottom = 19.0
 focus_mode = 0
-custom_colors/font_color_disabled = Color( 0.654902, 0.113725, 0.278431, 1 )
-custom_colors/font_color_focus = Color( 0.654902, 0.113725, 0.278431, 1 )
-custom_colors/font_color = Color( 0.654902, 0.113725, 0.278431, 1 )
-custom_colors/font_color_hover = Color( 0.654902, 0.113725, 0.278431, 1 )
-custom_colors/font_color_pressed = Color( 0.654902, 0.113725, 0.278431, 1 )
+custom_colors/font_color_disabled = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_colors/font_color_focus = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_colors/font_color = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_colors/font_color_hover = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_colors/font_color_pressed = Color( 0.25098, 0.188235, 0.215686, 1 )
 custom_fonts/font = SubResource( 39 )
 custom_styles/hover = SubResource( 38 )
 custom_styles/pressed = SubResource( 38 )
@@ -1516,11 +1513,11 @@ margin_top = 24.0
 margin_right = 120.0
 margin_bottom = 43.0
 focus_mode = 0
-custom_colors/font_color_disabled = Color( 0.654902, 0.113725, 0.278431, 1 )
-custom_colors/font_color_focus = Color( 0.654902, 0.113725, 0.278431, 1 )
-custom_colors/font_color = Color( 0.654902, 0.113725, 0.278431, 1 )
-custom_colors/font_color_hover = Color( 0.654902, 0.113725, 0.278431, 1 )
-custom_colors/font_color_pressed = Color( 0.654902, 0.113725, 0.278431, 1 )
+custom_colors/font_color_disabled = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_colors/font_color_focus = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_colors/font_color = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_colors/font_color_hover = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_colors/font_color_pressed = Color( 0.25098, 0.188235, 0.215686, 1 )
 custom_fonts/font = SubResource( 39 )
 custom_styles/hover = SubResource( 38 )
 custom_styles/pressed = SubResource( 38 )
@@ -1534,11 +1531,11 @@ margin_top = 48.0
 margin_right = 120.0
 margin_bottom = 67.0
 focus_mode = 0
-custom_colors/font_color_disabled = Color( 0.654902, 0.113725, 0.278431, 1 )
-custom_colors/font_color_focus = Color( 0.654902, 0.113725, 0.278431, 1 )
-custom_colors/font_color = Color( 0.654902, 0.113725, 0.278431, 1 )
-custom_colors/font_color_hover = Color( 0.654902, 0.113725, 0.278431, 1 )
-custom_colors/font_color_pressed = Color( 0.654902, 0.113725, 0.278431, 1 )
+custom_colors/font_color_disabled = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_colors/font_color_focus = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_colors/font_color = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_colors/font_color_hover = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_colors/font_color_pressed = Color( 0.25098, 0.188235, 0.215686, 1 )
 custom_fonts/font = SubResource( 39 )
 custom_styles/hover = SubResource( 38 )
 custom_styles/pressed = SubResource( 38 )
@@ -1548,7 +1545,6 @@ custom_styles/normal = SubResource( 38 )
 text = "Exit"
 
 [node name="indic" type="TextureRect" parent="MainGame/base"]
-modulate = Color( 1, 1, 1, 0 )
 margin_left = 102.0
 margin_top = 90.0
 margin_right = 115.0
