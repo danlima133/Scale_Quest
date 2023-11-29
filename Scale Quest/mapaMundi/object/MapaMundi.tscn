@@ -1524,7 +1524,7 @@ custom_styles/pressed = SubResource( 38 )
 custom_styles/focus = SubResource( 38 )
 custom_styles/disabled = SubResource( 38 )
 custom_styles/normal = SubResource( 38 )
-text = "Configurations"
+text = "Settings"
 
 [node name="Exit" type="Button" parent="MainGame/base/buttons"]
 margin_top = 48.0
@@ -1542,7 +1542,7 @@ custom_styles/pressed = SubResource( 38 )
 custom_styles/focus = SubResource( 38 )
 custom_styles/disabled = SubResource( 38 )
 custom_styles/normal = SubResource( 38 )
-text = "Exit"
+text = "Quit"
 
 [node name="indic" type="TextureRect" parent="MainGame/base"]
 margin_left = 102.0
