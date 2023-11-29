@@ -1255,6 +1255,7 @@ z_index = -1
 z_index = 1
 frames = SubResource( 53 )
 animation = "flying"
+frame = 2
 playing = true
 
 [node name="player" type="Sprite" parent="flying_block/texture"]
