@@ -105,7 +105,7 @@ dataPath = "res://game_behavior/platform_behavior/metaData/style11.platformData"
 curve = SubResource( 1 )
 
 [node name="root_motion" parent="Platforms/platform/path" index="0"]
-position = Vector2( 256, 48 )
+position = Vector2( 243, 48 )
 
 [node name="Box" parent="." instance=ExtResource( 2 )]
 
