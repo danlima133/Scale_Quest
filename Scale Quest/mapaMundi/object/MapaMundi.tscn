@@ -1,4 +1,4 @@
-[gd_scene load_steps=145 format=2]
+[gd_scene load_steps=142 format=2]
 
 [ext_resource path="res://assets/Mapa Mundi/Flying_block/Flying_Block (3).png" type="Texture" id=1]
 [ext_resource path="res://assets/Mapa Mundi/clouds.png" type="Texture" id=2]
@@ -88,9 +88,6 @@
 [ext_resource path="res://mapaMundi/code/TimerMusic.gd" type="Script" id=86]
 [ext_resource path="res://assets/UI/botton.png" type="Texture" id=87]
 [ext_resource path="res://mapaMundi/code/ResetGame.gd" type="Script" id=88]
-[ext_resource path="res://assets/sfx/notes sfx/minor volcano/4_fa.ogg" type="AudioStream" id=89]
-[ext_resource path="res://assets/music/Minor_Volcano.ogg" type="AudioStream" id=90]
-[ext_resource path="res://assets/sfx/jump.ogg" type="AudioStream" id=91]
 
 [sub_resource type="Animation" id=19]
 resource_name = "ToConfig"
@@ -582,7 +579,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 1.6, 2, 3.3, 3.9, 5.5, 5.9, 7.8, 8.4, 10.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ "Minor!!!", "Minor!!!", "Minor!!!", "Major!", "Major!", "Whole Tone", "Whole Tone", "And even Gypys Major!!", "And even Gypys Major!!", "My scales muisc are gone!", "My scales muisc are gone!" ]
+"values": [ "Minor!!!", "Minor!!!", "Minor!!!", "Major!", "Major!", "Whole Tone", "Whole Tone", "And even Gypsy Major!!", "And even Gypsy Major!!", "My music scales are gone!", "My music scales are gone!" ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("PlayerCutscene/UI/talk_panel/text:percent_visible")
@@ -1106,18 +1103,6 @@ tracks/9/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
-tracks/10/type = "value"
-tracks/10/path = NodePath("../MapaMundi/base:visible")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
-"times": PoolRealArray( 2 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
 
 [sub_resource type="Animation" id=26]
 resource_name = "trasitionToCredits"
@@ -1161,6 +1146,7 @@ states/trasitionToCredits/node = SubResource( 29 )
 states/trasitionToCredits/position = Vector2( 337.667, 73.2222 )
 transitions = [ "transition", "trasitionToCredits", SubResource( 30 ), "trasitionToCredits", "credits", SubResource( 31 ) ]
 start_node = "transition"
+end_node = "credits"
 graph_offset = Vector2( -98.0477, 0 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=33]
@@ -1322,6 +1308,7 @@ visible = false
 [node name="base" type="Control" parent="flying_block/camera/creditsUI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 1
 
 [node name="credit" type="Label" parent="flying_block/camera/creditsUI/base"]
 margin_top = 132.0
@@ -1334,7 +1321,7 @@ align = 1
 autowrap = true
 
 [node name="back_ground" type="ColorRect" parent="flying_block/camera/creditsUI/base"]
-modulate = Color( 1, 1, 1, 0 )
+modulate = Color( 1, 1, 1, 0.947368 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
@@ -1449,7 +1436,6 @@ parameters/playback = SubResource( 52 )
 
 [node name="Music" type="AudioStreamPlayer" parent="CreditsFinal"]
 stream = ExtResource( 38 )
-volume_db = -80.0
 bus = "Music"
 
 [node name="Credits" type="AnimationPlayer" parent="CreditsFinal"]
@@ -1686,7 +1672,6 @@ align = 1
 [node name="MapaMundi" type="Node" parent="."]
 
 [node name="base" type="Control" parent="MapaMundi"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -1710,27 +1695,15 @@ custom_colors/font_color = Color( 0.25098, 0.188235, 0.215686, 1 )
 custom_colors/font_color_hover = Color( 0.25098, 0.188235, 0.215686, 1 )
 custom_colors/font_color_pressed = Color( 0.25098, 0.188235, 0.215686, 1 )
 custom_fonts/font = SubResource( 1 )
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 2 )
-custom_styles/focus = SubResource( 2 )
-custom_styles/disabled = SubResource( 2 )
+custom_styles/hover = SubResource( 65 )
+custom_styles/pressed = SubResource( 65 )
+custom_styles/focus = SubResource( 65 )
+custom_styles/disabled = SubResource( 65 )
 custom_styles/normal = SubResource( 65 )
 text = "Back to Main"
 __meta__ = {
 "_editor_description_": ""
 }
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 90 )
-bus = "Music"
-
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 91 )
-bus = "SFXs"
-
-[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 89 )
-bus = "MusicNotes"
 
 [connection signal="finished" from="MusicPlayer" to="MusicPlayer/TimerMusic" method="_on_MusicPlayer_finished"]
 [connection signal="timeout" from="MusicPlayer/TimerMusic/timer" to="MusicPlayer/TimerMusic" method="_on_timer_timeout"]

@@ -63,6 +63,7 @@ roomTime = NodePath("../RoomTime")
 [node name="roomInfo" parent="." instance=ExtResource( 1 )]
 
 [node name="RoomTime" parent="." instance=ExtResource( 4 )]
+timeLevel = 240
 
 [node name="ManagerCollectables" parent="." instance=ExtResource( 5 )]
 
@@ -153,9 +154,10 @@ configNoteMusicalPath = "res://gameMangers/MuscialNotes/configFiles/schme2.MGcon
 position = Vector2( 192, 144 )
 
 [node name="noteData" parent="musicNote" index="2"]
-noteRegion = 2
+noteRegion = 3
 sound_note = ExtResource( 20 )
 roomTimePath = NodePath("../../RoomTime")
+shineColor = Color( 0.614697, 0.670489, 0.816406, 1 )
 
 [node name="player" parent="." instance=ExtResource( 21 )]
 position = Vector2( 32, 128 )

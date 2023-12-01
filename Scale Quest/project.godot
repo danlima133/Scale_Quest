@@ -10,7 +10,7 @@ config_version=4
 
 [application]
 
-config/name="Sophias's Melody Quest"
+config/name="Sophia's Melody Quest"
 run/main_scene="res://mapaMundi/object/MapaMundi.tscn"
 boot_splash/image="res://assets/logo WisePotion/Full_logo.png"
 boot_splash/use_filter=false

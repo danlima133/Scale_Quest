@@ -38,8 +38,8 @@ func _ready():
 			levelConlusion.get_node("name_level").text = MangerLevel.current_level.replace("_"  , " ")
 		
 			baseUI.add_child(levelConlusion)
-		
-			yield(get_tree().create_timer(1) , "timeout")
+			
+			yield(get_tree().create_timer(1.5) , "timeout")
 		
 			baseUI.get_node("conclusionLevel").queue_free()
 			

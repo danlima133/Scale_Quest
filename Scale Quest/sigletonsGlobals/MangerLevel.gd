@@ -44,6 +44,8 @@ var countRoom:int = -1
 
 var lastPoint:int
 
+var musicsNotesList:Array
+
 var conlusedGame:bool = false
 var levelConslused:bool = false
 

@@ -34,6 +34,7 @@ roomTime = NodePath("../RoomTime")
 [node name="ManagerCollectables" parent="." instance=ExtResource( 7 )]
 
 [node name="RoomTime" parent="." instance=ExtResource( 8 )]
+timeLevel = 120
 
 [node name="Tiles" parent="." instance=ExtResource( 6 )]
 tile_set = ExtResource( 16 )
@@ -77,7 +78,7 @@ curve = SubResource( 1 )
 position = Vector2( 64, 80 )
 
 [node name="musicNote" parent="." instance=ExtResource( 12 )]
-position = Vector2( 144, 144 )
+position = Vector2( 176, 32 )
 
 [node name="noteData" parent="musicNote" index="2"]
 noteRegion = 1

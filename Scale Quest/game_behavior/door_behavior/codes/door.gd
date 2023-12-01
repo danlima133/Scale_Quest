@@ -9,6 +9,8 @@ const doorOpenTexture = preload("res://assets/objects/door.tres")
 onready var texture = $texture
 onready var marker = $marker
 
+onready var manager_collectables = $"../../ManagerCollectables"
+
 var outputDoor:Object
 
 var object = null
@@ -26,6 +28,10 @@ func _markerDoorOutput():
 			outputDoor.marker.play("markerGreen")
 	
 	if need_key == false:
+		
+		outputDoor.marker.play("markerGreen")
+	
+	elif need_key == true and manager_collectables.keys > 0:
 		
 		outputDoor.marker.play("markerGreen")
 	
@@ -52,8 +58,6 @@ func _get_door():
 	outputDoor = get_node(doorOutputPath)
 
 func _teleport_to_door():
-	
-	print_debug()
 	
 	object.global_position = outputDoor.get_node("position").global_position
 

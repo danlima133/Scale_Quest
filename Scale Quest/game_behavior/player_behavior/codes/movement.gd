@@ -270,8 +270,6 @@ func _end_effect(obj):
 
 func _physics_process(delta):
 	
-	print(countCoyoteTimer)
-	
 	if not moveObject.is_on_floor():
 		
 		countCoyoteTimer = coyoteTimer

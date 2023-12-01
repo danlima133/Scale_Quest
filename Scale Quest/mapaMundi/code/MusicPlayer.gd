@@ -19,6 +19,8 @@ var stoped = false
 
 func playMusic():
 	
+	stoped = false
+	
 	timer.stop()
 	
 	if playing == true:

@@ -1,8 +1,15 @@
 extends CanvasLayer
 
+onready var name_level = $content/VBoxContainer/nameLevel
+onready var room_count = $content/VBoxContainer/roomCount
+
 func _ready():
 	
 	get_tree().paused = true
+	
+	name_level.text = MangerLevel.current_level.replace("_" , " ")
+	
+	room_count.text = "Room %s" % (MangerLevel.countRoom + 1)
 
 func _input(event):
 	

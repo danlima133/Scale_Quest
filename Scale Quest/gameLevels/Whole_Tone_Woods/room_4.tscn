@@ -34,6 +34,7 @@ roomTime = NodePath("../RoomTime")
 [node name="ManagerCollectables" parent="." instance=ExtResource( 7 )]
 
 [node name="RoomTime" parent="." instance=ExtResource( 8 )]
+timeLevel = 180
 
 [node name="Tiles" parent="." instance=ExtResource( 6 )]
 tile_set = ExtResource( 16 )
@@ -83,7 +84,6 @@ doorOutputPath = NodePath("../door3")
 [node name="door2" parent="Door" instance=ExtResource( 3 )]
 position = Vector2( 288, 160 )
 doorOutputPath = NodePath("../door")
-need_key = true
 
 [node name="door3" parent="Door" instance=ExtResource( 3 )]
 position = Vector2( 48, 48 )

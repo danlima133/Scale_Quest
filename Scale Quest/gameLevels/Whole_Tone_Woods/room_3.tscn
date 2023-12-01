@@ -116,6 +116,7 @@ tracks/0/keys = {
 roomTime = NodePath("../RoomTime")
 
 [node name="RoomTime" parent="." instance=ExtResource( 8 )]
+timeLevel = 180
 
 [node name="ManagerCollectables" parent="." instance=ExtResource( 7 )]
 

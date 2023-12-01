@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://game_behavior/box_behavior/objects/box.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game_behavior/roomComponets/Box.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://gameMangers/TimeRoom/objects/RoomTime.tscn" type="PackedScene" id=6]
 [ext_resource path="res://gameUI/roomInfo/object/roomInfo.tscn" type="PackedScene" id=7]
 [ext_resource path="res://gameUI/room/roomUI.tscn" type="PackedScene" id=8]
+[ext_resource path="res://gameEffects/effects/musicNotesCutscene.tscn" type="PackedScene" id=9]
 [ext_resource path="res://game_behavior/collectables/musicNotes/musicNote/object/musicNote.tscn" type="PackedScene" id=11]
 [ext_resource path="res://game_behavior/player_behavior/objects/player.tscn" type="PackedScene" id=12]
 [ext_resource path="res://roomsBackGrounds/Minor_Volcano.tscn" type="PackedScene" id=14]
@@ -25,6 +26,7 @@ roomTime = NodePath("../RoomTime")
 [node name="ManagerCollectables" parent="." instance=ExtResource( 5 )]
 
 [node name="RoomTime" parent="." instance=ExtResource( 6 )]
+timeLevel = 180
 
 [node name="Tiles" parent="." instance=ExtResource( 4 )]
 tile_set = ExtResource( 19 )
@@ -51,9 +53,13 @@ position = Vector2( 288, 48 )
 noteRegion = 3
 sound_note = ExtResource( 3 )
 roomTimePath = NodePath("../../RoomTime")
+cutsceneNotesPath = NodePath("../../musicNotesCutscene")
+shineColor = Color( 0.614697, 0.670489, 0.816406, 1 )
 
 [node name="player" parent="." instance=ExtResource( 12 )]
 position = Vector2( 32, 64 )
+
+[node name="musicNotesCutscene" parent="." instance=ExtResource( 9 )]
 
 [editable path="Tiles"]
 [editable path="musicNote"]

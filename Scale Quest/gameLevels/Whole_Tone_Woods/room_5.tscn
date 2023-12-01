@@ -55,6 +55,7 @@ roomTime = NodePath("../RoomTime")
 [node name="ManagerCollectables" parent="." instance=ExtResource( 7 )]
 
 [node name="RoomTime" parent="." instance=ExtResource( 8 )]
+timeLevel = 240
 
 [node name="Tiles" parent="." instance=ExtResource( 6 )]
 tile_set = ExtResource( 16 )

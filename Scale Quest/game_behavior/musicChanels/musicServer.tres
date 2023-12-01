@@ -71,9 +71,7 @@ volume_db = -12.0
 resource_name = "Compressor"
 
 [resource]
-bus/0/mute = true
 bus/0/volume_db = -3.32444
-bus/0/send = "s"
 bus/0/effect/0/effect = SubResource( 3 )
 bus/0/effect/0/enabled = true
 bus/0/effect/1/effect = SubResource( 4 )

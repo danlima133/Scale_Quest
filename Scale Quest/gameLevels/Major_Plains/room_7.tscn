@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://gameUI/roomInfo/object/roomInfo.tscn" type="PackedScene" id=1]
 [ext_resource path="res://gameUI/room/roomUI.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://game_behavior/collectables/musicNotes/musicNote/object/musicNote.tscn" type="PackedScene" id=12]
 [ext_resource path="res://assets/sfx/notes sfx/major plains/7_si.ogg" type="AudioStream" id=13]
 [ext_resource path="res://game_behavior/player_behavior/objects/player.tscn" type="PackedScene" id=14]
+[ext_resource path="res://gameEffects/effects/musicNotesCutscene.tscn" type="PackedScene" id=15]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -53,6 +54,7 @@ roomTime = NodePath("../RoomTime")
 [node name="ManagerCollectables" parent="." instance=ExtResource( 4 )]
 
 [node name="RoomTime" parent="." instance=ExtResource( 3 )]
+timeLevel = 240
 
 [node name="Tiles" parent="." instance=ExtResource( 8 )]
 tile_set = ExtResource( 10 )
@@ -113,9 +115,13 @@ position = Vector2( 208, 64 )
 [node name="noteData" parent="musicNote" index="2"]
 sound_note = ExtResource( 13 )
 roomTimePath = NodePath("../../RoomTime")
+cutsceneNotesPath = NodePath("../../musicNotesCutscene")
+shineColor = Color( 1, 0.945098, 0.698039, 1 )
 
 [node name="player" parent="." instance=ExtResource( 14 )]
 position = Vector2( 32, 144 )
+
+[node name="musicNotesCutscene" parent="." instance=ExtResource( 15 )]
 
 [editable path="Tiles"]
 [editable path="Platforms/platform"]

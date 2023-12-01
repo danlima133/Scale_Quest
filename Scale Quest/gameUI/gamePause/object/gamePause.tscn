@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://gameUI/gamePause/codes/gamePause.gd" type="Script" id=1]
 [ext_resource path="res://assets/fontText/static/PixelifySans-Regular.ttf" type="DynamicFontData" id=2]
@@ -17,6 +17,10 @@ margin_right = 5.0
 margin_top = 5.0
 margin_bottom = 10.0
 
+[sub_resource type="DynamicFont" id=3]
+size = 12
+font_data = ExtResource( 2 )
+
 [node name="gamePause" type="CanvasLayer"]
 pause_mode = 2
 script = ExtResource( 1 )
@@ -32,9 +36,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -132.5
-margin_top = -56.0
+margin_top = -85.0
 margin_right = 132.5
-margin_bottom = 56.0
+margin_bottom = 85.0
 rect_min_size = Vector2( 0, 100 )
 size_flags_vertical = 6
 custom_constants/separation = 10
@@ -50,7 +54,7 @@ text = "Game Pause"
 align = 1
 valign = 1
 
-[node name="restart_room" type="Button" parent="content"]
+[node name="back_to_game" type="Button" parent="content"]
 margin_left = 82.0
 margin_top = 60.0
 margin_right = 182.0
@@ -69,12 +73,9 @@ custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 2 )
 custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 2 )
-text = "Restart Room"
-__meta__ = {
-"_editor_description_": ""
-}
+text = "Back to game"
 
-[node name="back_to_game" type="Button" parent="content"]
+[node name="restart_room" type="Button" parent="content"]
 margin_left = 82.0
 margin_top = 96.0
 margin_right = 182.0
@@ -93,7 +94,10 @@ custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 2 )
 custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 2 )
-text = "Back to game"
+text = "Restart Room"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="back_to_main" type="Button" parent="content"]
 visible = false
@@ -117,6 +121,31 @@ custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 2 )
 text = "Go to main"
 
-[connection signal="pressed" from="content/restart_room" to="." method="_on_restart_room_pressed"]
+[node name="VBoxContainer" type="VBoxContainer" parent="content"]
+margin_top = 134.0
+margin_right = 265.0
+margin_bottom = 168.0
+size_flags_vertical = 6
+custom_constants/separation = 2
+
+[node name="nameLevel" type="Label" parent="content/VBoxContainer"]
+margin_right = 265.0
+margin_bottom = 16.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0.435294, 0, 0.192157, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "name level"
+align = 1
+
+[node name="roomCount" type="Label" parent="content/VBoxContainer"]
+margin_top = 18.0
+margin_right = 265.0
+margin_bottom = 34.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "room #"
+align = 1
+
 [connection signal="pressed" from="content/back_to_game" to="." method="_on_back_to_game_pressed"]
+[connection signal="pressed" from="content/restart_room" to="." method="_on_restart_room_pressed"]
 [connection signal="pressed" from="content/back_to_main" to="." method="_on_back_to_main_pressed"]

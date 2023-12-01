@@ -70,6 +70,7 @@ roomTime = NodePath("../RoomTime")
 [node name="ManagerCollectables" parent="." instance=ExtResource( 7 )]
 
 [node name="RoomTime" parent="." instance=ExtResource( 8 )]
+timeLevel = 300
 
 [node name="Tiles" parent="." instance=ExtResource( 6 )]
 tile_set = ExtResource( 21 )
@@ -212,6 +213,7 @@ position = Vector2( 304, 80 )
 noteRegion = 3
 sound_note = ExtResource( 11 )
 roomTimePath = NodePath("../../RoomTime")
+shineColor = Color( 0.614697, 0.670489, 0.816406, 1 )
 
 [node name="player" parent="." instance=ExtResource( 14 )]
 position = Vector2( 37, 71 )

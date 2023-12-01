@@ -58,6 +58,7 @@ tracks/0/keys = {
 roomTime = NodePath("../RoomTime")
 
 [node name="RoomTime" parent="." instance=ExtResource( 4 )]
+timeLevel = 300
 
 [node name="ManagerCollectables" parent="." instance=ExtResource( 5 )]
 
@@ -163,6 +164,7 @@ position = Vector2( 288, 80 )
 noteRegion = 3
 sound_note = ExtResource( 21 )
 roomTimePath = NodePath("../../RoomTime")
+shineColor = Color( 0.614697, 0.670489, 0.816406, 1 )
 
 [editable path="Tiles"]
 [editable path="Platforms/platform"]
