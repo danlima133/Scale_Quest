@@ -77,12 +77,13 @@ curve = SubResource( 1 )
 position = Vector2( 64, 80 )
 
 [node name="musicNote" parent="." instance=ExtResource( 12 )]
-position = Vector2( 168, 32 )
+position = Vector2( 144, 144 )
 
 [node name="noteData" parent="musicNote" index="2"]
 noteRegion = 1
 sound_note = ExtResource( 11 )
 roomTimePath = NodePath("../../RoomTime")
+shineColor = Color( 0.67152, 0.579109, 0.742188, 1 )
 
 [node name="player" parent="." instance=ExtResource( 13 )]
 position = Vector2( 80, 144 )

@@ -87,7 +87,7 @@ polygon = PoolVector2Array( 48, 48, 80, 48, 80, 64, 64, 64, 64, 144, 48, 144 )
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Tiles/collisionBody" index="2"]
 position = Vector2( -16, 0 )
-polygon = PoolVector2Array( 177, 50, 239, 50, 240, 80, 272, 80, 272, 96, 240, 96, 240, 160, 224, 160, 224, 144, 208, 144, 208, 128, 224, 128, 224, 64, 176, 64 )
+polygon = PoolVector2Array( 177, 50, 238, 51, 240, 80, 272, 80, 272, 96, 240, 96, 240, 160, 224, 160, 224, 144, 208, 144, 208, 128, 224, 128, 224, 64, 176, 64 )
 
 [node name="Platforms" parent="." instance=ExtResource( 11 )]
 
@@ -119,7 +119,7 @@ dataPath = "res://game_behavior/platform_behavior/metaData/style4.platformData"
 curve = SubResource( 4 )
 
 [node name="root_motion" parent="Platforms/platform3/path" index="0"]
-position = Vector2( 96, 48 )
+position = Vector2( 96, 51 )
 
 [node name="movement" parent="Platforms/platform3" index="1"]
 anims/move = SubResource( 5 )

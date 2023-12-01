@@ -1,10 +1,62 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/objects/door.tres" type="Texture" id=1]
 [ext_resource path="res://game_behavior/door_behavior/codes/door.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 11, 10.5 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "default"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("texture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "markerGreen"
+length = 2.0
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("texture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.12549, 1, 0, 1 ), Color( 0.12549, 1, 0, 0.458824 ), Color( 0.12549, 1, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "markerRed"
+length = 2.0
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("texture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 1 ), Color( 1, 0, 0, 0.568627 ), Color( 1, 0, 0, 1 ) ]
+}
 
 [node name="door" type="Area2D"]
 script = ExtResource( 2 )
@@ -15,11 +67,19 @@ centered = false
 offset = Vector2( -11, -23 )
 
 [node name="shape" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, -10.5 )
 shape = SubResource( 1 )
 
 [node name="position" type="Position2D" parent="."]
+visible = false
 position = Vector2( 0, -16 )
+
+[node name="marker" type="AnimationPlayer" parent="."]
+autoplay = "default"
+anims/default = SubResource( 5 )
+anims/markerGreen = SubResource( 3 )
+anims/markerRed = SubResource( 4 )
 
 [connection signal="body_entered" from="." to="." method="_on_door_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_door_body_exited"]

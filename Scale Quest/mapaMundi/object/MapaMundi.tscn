@@ -1,4 +1,4 @@
-[gd_scene load_steps=138 format=2]
+[gd_scene load_steps=145 format=2]
 
 [ext_resource path="res://assets/Mapa Mundi/Flying_block/Flying_Block (3).png" type="Texture" id=1]
 [ext_resource path="res://assets/Mapa Mundi/clouds.png" type="Texture" id=2]
@@ -86,6 +86,11 @@
 [ext_resource path="res://assets/music/Menu.ogg" type="AudioStream" id=84]
 [ext_resource path="res://mapaMundi/code/MusicPlayer.gd" type="Script" id=85]
 [ext_resource path="res://mapaMundi/code/TimerMusic.gd" type="Script" id=86]
+[ext_resource path="res://assets/UI/botton.png" type="Texture" id=87]
+[ext_resource path="res://mapaMundi/code/ResetGame.gd" type="Script" id=88]
+[ext_resource path="res://assets/sfx/notes sfx/minor volcano/4_fa.ogg" type="AudioStream" id=89]
+[ext_resource path="res://assets/music/Minor_Volcano.ogg" type="AudioStream" id=90]
+[ext_resource path="res://assets/sfx/jump.ogg" type="AudioStream" id=91]
 
 [sub_resource type="Animation" id=19]
 resource_name = "ToConfig"
@@ -114,7 +119,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( -512, 0, 223.75, 0, -223.75, 0, -1, 61.25, 1, -61.25 ),
+"points": PoolRealArray( -512, -1, -114, 1, -105, 0, 0, 2.25, 2, 0 ),
 "times": PoolRealArray( 0, 2 )
 }
 
@@ -746,45 +751,6 @@ end_node = "cameraToMain"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=52]
 
-[sub_resource type="Animation" id=34]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("../flying_block/camera/creditsUI/base/back_ground:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("../flying_block:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 283, 70 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Music:volume_db")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-
 [sub_resource type="Animation" id=24]
 resource_name = "credits"
 length = 20.0
@@ -811,7 +777,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7.5, 8, 9, 9.5, 10.5, 11, 12, 12.5, 13, 14, 14.5, 15.5, 16, 17, 18, 18.5, 19.5, 20 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 0.435294, 0, 0.192157, 0 ), Color( 0.435294, 0, 0.192157, 0 ), Color( 0.435294, 0, 0.192157, 1 ), Color( 0.435294, 0, 0.192157, 1 ), Color( 0.435294, 0, 0.192157, 0 ), Color( 0.435294, 0, 0.192157, 0 ), Color( 0.435294, 0, 0.192157, 1 ), Color( 0.435294, 0, 0.192157, 1 ), Color( 0.435294, 0, 0.192157, 0 ), Color( 0.435294, 0, 0.192157, 0 ), Color( 0.435294, 0, 0.192157, 1 ), Color( 0.435294, 0, 0.192157, 1 ), Color( 0.435294, 0, 0.192157, 0 ), Color( 0.435294, 0, 0.192157, 0 ), Color( 0.435294, 0, 0.192157, 1 ), Color( 0.435294, 0, 0.192157, 1 ), Color( 0.435294, 0, 0.192157, 0 ), Color( 0.435294, 0, 0.192157, 0 ), Color( 0.435294, 0, 0.192157, 1 ), Color( 0.435294, 0, 0.192157, 1 ), Color( 0.435294, 0, 0.192157, 0 ), Color( 0.435294, 0, 0.192157, 0 ), Color( 0.435294, 0, 0.192157, 0 ), Color( 0.435294, 0, 0.192157, 1 ), Color( 0.435294, 0, 0.192157, 1 ), Color( 0.435294, 0, 0.192157, 0 ), Color( 0.435294, 0, 0.192157, 0 ), Color( 0.435294, 0, 0.192157, 0 ), Color( 0.435294, 0, 0.192157, 1 ), Color( 0.435294, 0, 0.192157, 1 ), Color( 0.435294, 0, 0.192157, 0 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("../flying_block/camera/creditsUI/base/credit:text")
@@ -1128,6 +1094,30 @@ tracks/8/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("../MapaMundi/base:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("../MapaMundi/base:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=26]
 resource_name = "trasitionToCredits"
@@ -1187,11 +1177,32 @@ margin_right = 2.0
 margin_top = 2.0
 margin_bottom = 4.0
 
+[sub_resource type="DynamicFont" id=1]
+size = 8
+font_data = ExtResource( 22 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 87 )
+region_rect = Rect2( 0, 0, 190, 45 )
+margin_left = 5.0
+margin_right = 5.0
+margin_top = 5.0
+margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id=65]
+texture = ExtResource( 87 )
+region_rect = Rect2( 0, 0, 190, 45 )
+margin_left = 4.0
+margin_right = 4.0
+margin_top = 5.0
+margin_bottom = 10.0
+
 [node name="MapaMundi" type="Node2D"]
 script = ExtResource( 13 )
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
+bus = "Music"
 script = ExtResource( 85 )
 
 [node name="TimerMusic" type="Node" parent="MusicPlayer"]
@@ -1216,6 +1227,7 @@ margin_top = -512.0
 margin_right = 608.0
 margin_bottom = -332.0
 rect_min_size = Vector2( 320, 180 )
+mouse_filter = 2
 texture = ExtResource( 37 )
 expand = true
 stretch_mode = 5
@@ -1224,7 +1236,7 @@ __meta__ = {
 }
 
 [node name="camera" type="Camera2D" parent="." groups=["camera"]]
-position = Vector2( 288, -512 )
+position = Vector2( 0, -512 )
 anchor_mode = 0
 current = true
 script = ExtResource( 24 )
@@ -1278,14 +1290,12 @@ position = Vector2( 247, 88 )
 dootLevel = 3
 
 [node name="flying_block" type="Node2D" parent="."]
-position = Vector2( 283, 70 )
-z_index = -1
+position = Vector2( 282, 67 )
+z_index = -3
 
 [node name="texture" type="AnimatedSprite" parent="flying_block"]
-z_index = 1
 frames = SubResource( 53 )
 animation = "flying"
-frame = 2
 playing = true
 
 [node name="player" type="Sprite" parent="flying_block/texture"]
@@ -1317,13 +1327,14 @@ anchor_bottom = 1.0
 margin_top = 132.0
 margin_right = 320.0
 margin_bottom = 152.0
-custom_colors/font_color = Color( 1, 1, 1, 0 )
+custom_colors/font_color = Color( 0.435294, 0, 0.192157, 0 )
 custom_fonts/font = ExtResource( 36 )
 text = "WisePotion"
 align = 1
 autowrap = true
 
 [node name="back_ground" type="ColorRect" parent="flying_block/camera/creditsUI/base"]
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
@@ -1438,11 +1449,11 @@ parameters/playback = SubResource( 52 )
 
 [node name="Music" type="AudioStreamPlayer" parent="CreditsFinal"]
 stream = ExtResource( 38 )
+volume_db = -80.0
 bus = "Music"
 
 [node name="Credits" type="AnimationPlayer" parent="CreditsFinal"]
 unique_name_in_owner = true
-anims/RESET = SubResource( 34 )
 anims/credits = SubResource( 24 )
 anims/finishedCredit = SubResource( 35 )
 anims/normal = SubResource( 36 )
@@ -1463,6 +1474,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -512.0
 margin_bottom = -512.0
+mouse_filter = 2
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1525,7 +1537,7 @@ custom_styles/pressed = SubResource( 38 )
 custom_styles/focus = SubResource( 38 )
 custom_styles/disabled = SubResource( 38 )
 custom_styles/normal = SubResource( 38 )
-text = "Settings"
+text = "Reset Game ?"
 
 [node name="Exit" type="Button" parent="MainGame/base/buttons"]
 margin_top = 48.0
@@ -1557,8 +1569,174 @@ stretch_mode = 6
 
 [node name="moveAnim" type="Tween" parent="MainGame/base/indic"]
 
+[node name="ResetGame" type="Node2D" parent="."]
+visible = false
+position = Vector2( 323, -512 )
+script = ExtResource( 88 )
+
+[node name="Control" type="Control" parent="ResetGame"]
+anchor_left = 0.9
+anchor_top = -2.909
+anchor_right = 1.9
+anchor_bottom = -2.0
+margin_right = 320.0
+margin_bottom = 176.0
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ResetGame/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ResetGame/Control/MarginContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 315.0
+margin_bottom = 171.0
+
+[node name="Label" type="Label" parent="ResetGame/Control/MarginContainer/VBoxContainer"]
+margin_right = 310.0
+margin_bottom = 20.0
+custom_colors/font_color = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_fonts/font = ExtResource( 36 )
+text = "Reset Game"
+align = 1
+
+[node name="HBoxContainer" type="VBoxContainer" parent="ResetGame/Control/MarginContainer/VBoxContainer"]
+margin_left = 84.0
+margin_top = 60.0
+margin_right = 226.0
+margin_bottom = 130.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+alignment = 1
+
+[node name="Label" type="Label" parent="ResetGame/Control/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 142.0
+margin_bottom = 20.0
+custom_colors/font_color = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_fonts/font = ExtResource( 36 )
+text = "Reset your game ?"
+
+[node name="reset_game" type="Button" parent="ResetGame/Control/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 21.0
+margin_top = 24.0
+margin_right = 121.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 100, 0 )
+focus_mode = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_colors/font_color_disabled = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_colors/font_color_focus = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_colors/font_color = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_colors/font_color_hover = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_colors/font_color_pressed = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/disabled = SubResource( 2 )
+custom_styles/normal = SubResource( 2 )
+text = "Yep"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="no" type="Button" parent="ResetGame/Control/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 21.0
+margin_top = 49.0
+margin_right = 121.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 100, 0 )
+focus_mode = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_colors/font_color_disabled = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_colors/font_color_focus = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_colors/font_color = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_colors/font_color_hover = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_colors/font_color_pressed = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/disabled = SubResource( 2 )
+custom_styles/normal = SubResource( 2 )
+text = "No"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="alertHTML" type="Label" parent="ResetGame/Control/MarginContainer"]
+visible = false
+margin_left = 5.0
+margin_top = 66.0
+margin_right = 315.0
+margin_bottom = 109.0
+custom_colors/font_color = Color( 0.435294, 0, 0.192157, 1 )
+custom_fonts/font = ExtResource( 36 )
+text = "The save game has been deleted
+Reload Page for changes !"
+align = 1
+
+[node name="MapaMundi" type="Node" parent="."]
+
+[node name="base" type="Control" parent="MapaMundi"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="back_to_main" type="Button" parent="MapaMundi/base"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -103.0
+margin_top = -28.0
+margin_right = -3.0
+margin_bottom = -2.0
+rect_min_size = Vector2( 100, 0 )
+focus_mode = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_colors/font_color_disabled = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_colors/font_color_focus = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_colors/font_color = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_colors/font_color_hover = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_colors/font_color_pressed = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/disabled = SubResource( 2 )
+custom_styles/normal = SubResource( 65 )
+text = "Back to Main"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 90 )
+bus = "Music"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 91 )
+bus = "SFXs"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 89 )
+bus = "MusicNotes"
+
 [connection signal="finished" from="MusicPlayer" to="MusicPlayer/TimerMusic" method="_on_MusicPlayer_finished"]
 [connection signal="timeout" from="MusicPlayer/TimerMusic/timer" to="MusicPlayer/TimerMusic" method="_on_timer_timeout"]
 [connection signal="input_event" from="playerPath/path/root_motion/player/area_mouse" to="playerPath" method="_on_area_mouse_input_event"]
 [connection signal="mouse_entered" from="playerPath/path/root_motion/player/area_mouse" to="playerPath" method="_on_area_mouse_mouse_entered"]
 [connection signal="mouse_exited" from="playerPath/path/root_motion/player/area_mouse" to="playerPath" method="_on_area_mouse_mouse_exited"]
+[connection signal="pressed" from="ResetGame/Control/MarginContainer/VBoxContainer/HBoxContainer/reset_game" to="ResetGame" method="_on_reset_game_pressed"]
+[connection signal="pressed" from="ResetGame/Control/MarginContainer/VBoxContainer/HBoxContainer/no" to="ResetGame" method="_on_no_pressed"]
+[connection signal="pressed" from="MapaMundi/base/back_to_main" to="." method="_on_back_to_main_pressed"]

@@ -11,6 +11,11 @@ onready var indic = $MainGame/base/indic
 
 onready var music_player = $"%MusicPlayer"
 
+onready var camera_offset = $camera/cameraOffset
+
+onready var reset_game = $ResetGame
+onready var mapa_mundi = $MapaMundi
+
 func _ready():
 	
 	ServeData.loadGame()
@@ -20,6 +25,8 @@ func _ready():
 	match Global.hasCutscene:
 		
 		false:
+			
+			reset_game.show()
 			
 			transition.hide()
 			
@@ -58,6 +65,20 @@ func creditConclused():
 
 func finishedCutscene():
 	
+	mapa_mundi.get_child(0).show()
+	
+	reset_game.show()
+	
 	Global.hasCutscene = false
 	
 	ServeData.saveGame()
+
+func _on_back_to_main_pressed():
+	
+	$MainGame.can_pressed = true
+	
+	camera_offset.play_backwards("ToWolrdMap")
+	
+	$"%MusicPlayer".current_local = $"%MusicPlayer".local.Menu
+	
+	$"%MusicPlayer".playMusic()

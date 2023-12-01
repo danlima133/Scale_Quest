@@ -10,13 +10,13 @@ config_version=4
 
 [application]
 
-config/name="Scale Quest"
+config/name="Sophias's Melody Quest"
 run/main_scene="res://mapaMundi/object/MapaMundi.tscn"
 boot_splash/image="res://assets/logo WisePotion/Full_logo.png"
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0.529412, 0, 1, 1 )
 config/icon="res://assets/icon/48x48.png"
-config/windows_native_icon="res://assets/icon/icon.ico"
+config/windows_native_icon="res://assets/icon/favicon (2).ico"
 
 [audio]
 
@@ -62,7 +62,7 @@ playerJump={
 }
 playerInterecation={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":81,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 gamePause={
@@ -73,6 +73,11 @@ gamePause={
 toggleFullscreen={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777254,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+playViolin={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 

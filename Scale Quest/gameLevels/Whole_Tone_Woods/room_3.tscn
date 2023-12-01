@@ -222,6 +222,7 @@ position = Vector2( 16, 16 )
 noteRegion = 1
 sound_note = ExtResource( 15 )
 roomTimePath = NodePath("../../RoomTime")
+shineColor = Color( 0.67152, 0.579109, 0.742188, 1 )
 
 [node name="player" parent="." instance=ExtResource( 12 )]
 position = Vector2( 32, 144 )

@@ -50,6 +50,8 @@ var coyoteTimer = 0.1
 var countCoyoteTimer = 0
 var can_jump = false
 
+var can_move = true
+
 ###
 
 ### (func) getting fileData and func _read:
@@ -240,7 +242,7 @@ func _gravity(delta):
 
 func change_state(state_key:String):
 	
-	movement_animation.play(state_key)
+	if can_move: movement_animation.play(state_key)
 
 ### end
 

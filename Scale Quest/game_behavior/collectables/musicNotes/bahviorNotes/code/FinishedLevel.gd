@@ -1,5 +1,7 @@
 extends Node
 
+const PreEffectNote = preload("res://gameEffects/effects/musicExplosion.tscn")
+
 enum noteType{
 	Major_Plain
 	Whole_Tone_Woods
@@ -11,9 +13,9 @@ signal levelCompleted
 
 const notesTextures = [
 preload("res://assets/notesMusic/note_1.tres"),
-preload("res://assets/notesMusic/note_3.tres"),
+preload("res://assets/notesMusic/note_2.tres"),
 preload("res://assets/notesMusic/note_4.tres"),
-preload("res://assets/notesMusic/note_2.tres")
+preload("res://assets/notesMusic/note_3.tres")
 ]
 
 
@@ -21,6 +23,8 @@ export(noteType) var noteRegion
 export(AudioStream) var sound_note
 
 export(NodePath) var roomTimePath
+
+export(Color) var shineColor
 
 onready var dataBase = get_parent()
 
@@ -38,11 +42,13 @@ func _getting_note(object):
 	
 	if object.is_in_group("player"):
 		
+		_makeEffect()
+		
 		get_tree().call_group("roomTime" , "_stop_timer")
 		
 		emit_signal("levelCompleted")
 		
-		ServeAudio.play_sound_at_position(sound_note , get_parent().global_position , "SFXs")
+		ServeAudio.play_sound_at_position(sound_note , get_parent().global_position , "MusicNotes")
 		
 		dataBase.hide()
 		
@@ -82,7 +88,21 @@ func _get_TimeAvarage():
 	
 	MangerLevel.load_room(dataBase.owner)
 
+func _makeEffect():
+	
+	var effect = PreEffectNote.instance()
+	
+	effect.get_node("NoteData").setNote(noteRegion + 1)
+	
+	effect.global_position = dataBase.global_position
+	
+	dataBase.get_parent().add_child(effect)
+	
+	effect.get_node("NoteData").setData()
+
 func _ready():
+	
+	texture.material.set("shader_param/shine_color" , shineColor)
 	
 	_set_noteData()
 

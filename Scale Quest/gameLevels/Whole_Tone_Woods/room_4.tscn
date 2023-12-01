@@ -83,6 +83,7 @@ doorOutputPath = NodePath("../door3")
 [node name="door2" parent="Door" instance=ExtResource( 3 )]
 position = Vector2( 288, 160 )
 doorOutputPath = NodePath("../door")
+need_key = true
 
 [node name="door3" parent="Door" instance=ExtResource( 3 )]
 position = Vector2( 48, 48 )
@@ -95,6 +96,7 @@ position = Vector2( 192, 32 )
 noteRegion = 1
 sound_note = ExtResource( 11 )
 roomTimePath = NodePath("../../RoomTime")
+shineColor = Color( 0.67152, 0.579109, 0.742188, 1 )
 
 [node name="player" parent="." instance=ExtResource( 13 )]
 position = Vector2( 32, 96 )

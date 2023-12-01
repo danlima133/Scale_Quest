@@ -1,6 +1,21 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://gameUI/room/roomFinished/code/roomFinished.gd" type="Script" id=1]
+[ext_resource path="res://assets/fontText/static/PixelifySans-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://gameUI/resources/fonts/main_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/UI/botton.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 8
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 190, 45 )
+margin_left = 5.0
+margin_right = 5.0
+margin_top = 5.0
+margin_bottom = 5.0
 
 [node name="roomFinished" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -28,34 +43,57 @@ __meta__ = {
 }
 
 [node name="text" type="Label" parent="content"]
-margin_top = 18.0
+margin_top = 14.0
 margin_right = 265.0
-margin_bottom = 32.0
+margin_bottom = 34.0
+custom_fonts/font = ExtResource( 3 )
 text = "Time Finished"
 align = 1
 
 [node name="try_again" type="Button" parent="content"]
 margin_left = 82.0
-margin_top = 42.0
+margin_top = 44.0
 margin_right = 182.0
-margin_bottom = 62.0
+margin_bottom = 65.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "Try again"
+custom_colors/font_color_disabled = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_colors/font_color_focus = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_colors/font_color = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_colors/font_color_hover = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_colors/font_color_pressed = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/disabled = SubResource( 2 )
+custom_styles/normal = SubResource( 2 )
+text = "Try Again"
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="back_to_main" type="Button" parent="content"]
 margin_left = 82.0
-margin_top = 72.0
+margin_top = 75.0
 margin_right = 182.0
-margin_bottom = 92.0
+margin_bottom = 96.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "Back to main"
+custom_colors/font_color_disabled = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_colors/font_color_focus = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_colors/font_color = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_colors/font_color_hover = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_colors/font_color_pressed = Color( 0.25098, 0.188235, 0.215686, 1 )
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/disabled = SubResource( 2 )
+custom_styles/normal = SubResource( 2 )
+text = "Back To main"
 __meta__ = {
 "_editor_description_": ""
 }

@@ -8,7 +8,7 @@ func _on_dootLevel_mouse_entered():
 	
 	var popup = popUpPreObject.instance()
 	
-	popup.rect_global_position = global_position + Vector2(-30 , -80)
+	popup.rect_global_position = global_position + Vector2(-22 , -80)
 	
 	add_child(popup)
 	

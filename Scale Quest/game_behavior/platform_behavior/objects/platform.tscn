@@ -25,6 +25,7 @@ tracks/0/keys = {
 }
 
 [node name="platform" type="Node2D"]
+z_index = 1
 script = ExtResource( 2 )
 
 [node name="path" type="Path2D" parent="."]

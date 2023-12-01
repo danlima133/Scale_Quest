@@ -53,9 +53,11 @@ func _input(event):
 	
 	if event is InputEventKey:
 		
-		if event.pressed and event.scancode == KEY_T:
+		if Input.is_action_just_pressed("playViolin") and objectConfig.ReciveData.in_move == false:
 			
 			if object != null:
+				
+				get_tree().call_group("player" , "_playViolin")
 				
 				match block_active:
 					

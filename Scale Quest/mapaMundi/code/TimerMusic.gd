@@ -12,7 +12,7 @@ func _ready():
 
 func _on_MusicPlayer_finished():
 	
-	if music_player.playing == true:
+	if music_player.stoped == false:
 	
 		timer.wait_time = rand_range(timeMin , timeMax)
 		

@@ -7,10 +7,33 @@ const doorClosedTexture = preload("res://assets/objects/doorClosed.tres")
 const doorOpenTexture = preload("res://assets/objects/door.tres")
 
 onready var texture = $texture
+onready var marker = $marker
 
 var outputDoor:Object
 
 var object = null
+
+func _markerDoorOutput():
+	
+	match outputDoor.need_key:
+		
+		true:
+			
+			outputDoor.marker.play("markerRed")
+		
+		false:
+			
+			outputDoor.marker.play("markerGreen")
+	
+	if need_key == false:
+		
+		outputDoor.marker.play("markerGreen")
+	
+	else: outputDoor.marker.play("markerRed")
+
+func _removeMarker():
+	
+	outputDoor.marker.play("default")
 
 func _setTexture():
 	
@@ -77,9 +100,13 @@ func _on_door_body_entered(body):
 	if body.is_in_group("player"):
 		
 		object = body
+		
+		_markerDoorOutput()
 
 func _on_door_body_exited(body):
 	
 	if body.is_in_group("player"):
 		
 		object = null
+		
+		_removeMarker()

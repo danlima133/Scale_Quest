@@ -27,7 +27,6 @@ _data = {
 [node name="room_6" type="Node2D"]
 
 [node name="Gypsy_Major_Desert" parent="." instance=ExtResource( 12 )]
-visible = false
 
 [node name="roomInfo" parent="." instance=ExtResource( 10 )]
 

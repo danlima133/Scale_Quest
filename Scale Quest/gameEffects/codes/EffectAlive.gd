@@ -7,3 +7,5 @@ func _process(delta):
 	if emitting == false:
 		
 		emit_signal("effectDethed" , self)
+		
+		set_process(false)

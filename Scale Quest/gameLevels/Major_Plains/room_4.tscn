@@ -72,7 +72,7 @@ dataPath = "res://game_behavior/platform_behavior/metaData/style5.platformData"
 curve = SubResource( 1 )
 
 [node name="root_motion" parent="Platforms/platform/path" index="0"]
-position = Vector2( 32, 144 )
+position = Vector2( 32, 147 )
 
 [node name="musicNote" parent="." instance=ExtResource( 9 )]
 position = Vector2( 256, 80 )

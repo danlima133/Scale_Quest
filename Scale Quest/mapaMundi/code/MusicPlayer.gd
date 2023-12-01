@@ -15,6 +15,8 @@ var current_local:int
 var positionMusic:float
 var timerPosition:float
 
+var stoped = false
+
 func playMusic():
 	
 	timer.stop()
@@ -51,6 +53,8 @@ func playMusic():
 
 func stopMusic(totaly:bool = false):
 	
+	stoped = true
+	
 	var transition = get_tree().create_tween()
 	
 	transition.tween_property(self , "volume_db" , -40 , 1)
@@ -64,6 +68,8 @@ func stopMusic(totaly:bool = false):
 	transition = null
 
 func resumeMusic():
+	
+	stoped = false
 
 	var transition = get_tree().create_tween()
 	
